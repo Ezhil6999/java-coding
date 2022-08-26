@@ -1,0 +1,24 @@
+
+import javax.swing.*;
+import java.util.*;
+import java.lang.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner((System.in));
+     String str1=sc.next();
+     char []ch1=str1.toCharArray();
+     char st=' ';
+     for(int i=0;i< str1.length();i++) {
+
+          if(i==0)st=ch1[i];
+        else if (i % 2 != 0 ) {
+             int int1= Character.getNumericValue(ch1[i]);
+             for(int j=0;j<int1;j++){
+               System.out.print(st);
+             }
+         }
+         else st=ch1[i];
+
+     }}
+}
