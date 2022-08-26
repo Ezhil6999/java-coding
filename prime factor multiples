@@ -1,0 +1,24 @@
+
+import javax.swing.*;
+import java.util.*;
+import java.lang.*;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    boolean st=true,prime;
+    int int1=sc.nextInt();
+    for(int i=2;i<int1;i++){
+        if(int1%i==2){
+            prime=true;
+            for(int j=2;j<i/2;j++){
+                if(i%j==0){
+                    prime=false;
+                    break;
+                }
+            }
+
+        if(prime=true) System.out.println(i);
+    }}
+    }
+}
