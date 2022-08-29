@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) throws Exception{
+        Scanner a=new Scanner(System.in);
+        String at=a.nextLine()+"  ";
+        int i=0,j=0,count=0;
+        String s="";
+
+        while(j<at.length()){
+            String b=String.valueOf(at.charAt(i));
+            String c=String.valueOf(at.charAt(j));
+            if(b.equals(c)){
+            j++;count++;
+            } else {
+                s=s+b+count;
+                i=j;count=0;
+            }
+        }
+        System.out.println(s);
+
+
+        }
+    }
+
