@@ -1,0 +1,35 @@
+import java.util.*;
+
+import static java.lang.String.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner a = new Scanner(System.in);
+        String at = a.nextLine();
+        char[] ch = at.toCharArray();
+        int len = at.length() - 1;
+        int l = len;
+        char[] ch1 = new char[at.length()];
+        for (int i = 0; i <= len; i++) {
+            if (!(ch[i] >= 'a' && ch[i] <= 'z' || ch[i] >= 'A' && ch[i] <= 'Z'))
+                ch1[i]=ch[i];
+
+        }
+        for (int i = 0; i <= len; i++) {
+            if(!(ch[i] >= 'a' && ch[i] <= 'z' || ch[i] >= 'A' && ch[i] <= 'Z')){
+
+            }
+            else if (!(ch[l] >= 'a' && ch[l] <= 'z' || ch[l] >= 'A' && ch[l] <= 'Z')) {
+                l--;
+                i--;
+            }else {
+                ch1[l] = ch[i];l--;
+            }
+  }
+            for (char c : ch1) {
+                System.out.print(c);
+            }
+
+
+    }
+}
