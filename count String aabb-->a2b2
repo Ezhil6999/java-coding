@@ -1,0 +1,25 @@
+import java.util.*;
+
+import static java.lang.String.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner a = new Scanner(System.in);
+      String st=a.nextLine()+"  ";
+      char flwtter=st.charAt(0);
+      char[]ch=st.toCharArray();
+     String s="";
+     int count=0;
+      for(int i=0;i<ch.length-1;i++){
+
+          if(Character.valueOf(ch[i])==flwtter){
+              count++;
+          }else {
+              s=s+flwtter+count;
+              flwtter=ch[i];
+              count=1;
+          }
+      }
+        System.out.println(s);
+    }
+}
