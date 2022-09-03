@@ -1,0 +1,26 @@
+import java.util.*;
+
+import static java.lang.String.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner a = new Scanner(System.in);
+       String st=a.nextLine()+"  ";
+       char[]ch=st.toCharArray();
+       int count=0,b=0,k=0;
+      for(int i=0;i<st.length()-1;i++){
+          if(ch[i]==ch[i+1]){
+              count++;
+
+          }
+          else if(count>b){
+              b=count;
+              k=i;
+              count=0;}else count=0;
+
+
+      }
+       System.out.println(ch[k]);
+    }
+
+}
