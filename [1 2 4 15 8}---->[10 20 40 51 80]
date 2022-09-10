@@ -1,0 +1,50 @@
+import java.util.*;
+public class Ezhil {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int[] arr=new int[5];
+        int[] arr1=new int[5];
+        int v=0;
+        for (int i=0;i< arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(int w:arr){
+            arr1[v]=w;v++;
+
+        }
+        Ezhil ez=new Ezhil();
+        int c=ez.reverse(arr1);
+
+        for(int i=0;i< arr.length;i++){
+           String ar=""+arr[i];
+           int br=ar.length();
+            char[] ch=  ar.toCharArray();
+           String s="";
+            for(int j=br-1;j>=0;j--){
+                s=s+ch[j];
+            }
+
+            if(br==c){
+                arr[i]=Integer.parseInt(s);
+            }else{
+                int k=Integer.parseInt(s);
+                for(int j=br;j<c;j++){
+                    k=k*10;
+                }arr[i]=k;
+
+            }
+        }
+        for(int h:arr){
+            System.out.println(h);
+        }
+    }
+    int reverse(int arr[]){
+        Arrays.sort(arr);
+        int a=arr[arr.length-1];
+        String b=""+a;
+        int c=b.length();
+        System.out.println("max digit= "+c);
+        return c;
+    }
+
+}
