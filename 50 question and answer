@@ -1,0 +1,163 @@
+//reverse a string   11111111111111
+
+import java.lang.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main {
+    public static void main(String[] args) throws Exception {
+       Scanner a=new Scanner(System.in);
+       String st=a.nextLine();
+       String s="";
+       for(int i=st.length()-1;i>=0;i--){
+           s=s+st.charAt(i);
+       }
+       System.out.println(s);
+    }
+}
+
+//How to swap two numbers without using a third variable?   222222222222222222222
+
+import java.lang.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main {
+    public static void main(String[] args) throws Exception {
+       Scanner sc=new Scanner(System.in);
+        System.out.println("a=");
+      int a=sc.nextInt();
+        System.out.println("b=");
+      int b=sc.nextInt();
+      a=a+b;
+      b=a-b;
+      a=a-b;
+        System.out.println("a=");
+        System.out.println(a);
+        System.out.println("b=");
+        System.out.println(b);
+    }
+}
+
+
+//Java Program to check if a vowel is present in the string?    333333333333333333
+
+
+import java.lang.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main {
+    public static void main(String[] args) throws Exception {
+       Scanner sc=new Scanner(System.in);
+      String a=sc.nextLine();
+      int count=0;
+      for(int i=0;i<a.length();i++){
+          char b=a.charAt(i);
+          switch (b){
+              case 'a':
+                 count++;
+                 break;
+              case 'e':
+                  count++;
+                  break;
+              case 'i':
+                  count++;
+                  break;
+              case 'o':
+                  count++;
+                  break;
+              case 'u':
+                  count++;
+                  break;
+
+          }
+      }
+        System.out.println("number of vowels "+count);
+    }
+}
+
+//  4. Java program to check if the given number is Prime?
+import java.lang.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main {
+    public static void main(String[] args) throws Exception {
+       Scanner sc=new Scanner(System.in);
+       int a=sc.nextInt();
+int count=0;
+      for(int i=1;i<=a;i++){
+          if(a%i==0){
+              System.out.print(i+"\t");
+              count++;
+          }
+      }
+        System.out.println();
+      if(count==2) System.out.println("prime number");
+      else System.out.println("not a prime number");
+    }
+}
+
+
+//  5. Fibonacci Series using recursion
+//method 1:
+import java.lang.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main {
+    public static void main(String[] args) throws Exception {
+       Scanner sc=new Scanner(System.in);
+       int count=sc.nextInt();
+       int b=0,c=1,d=1;
+       for(int i=1;i<=count;i++){
+           System.out.println(b+"\t");
+           b=c;
+           c=d;
+           d=b+c;
+           
+        }
+    }
+}
+
+//method 2
+import java.lang.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int count = sc.nextInt();
+        System.out.println(coun(count));
+    } public static int coun(int count) {
+        if (count <= 1) {
+            return count;}
+            return coun(count - 1) + coun(count - 2);
+
+    }
+}
+
+//6. Check if a List of integers contains only odd numbers?
+
+import java.lang.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int count = sc.nextInt();
+        int ount=0;
+        String s=String.valueOf(count);
+       for(int i=0;i<s.length();i++){
+           if(Integer.parseInt(String.valueOf(s.charAt(i)))%2==0)ount++;
+       } if(ount==0){
+            System.out.println("odd");
+        }else System.out.println("even");
+          }
+}
+
+
+
