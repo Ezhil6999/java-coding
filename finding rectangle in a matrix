@@ -1,0 +1,37 @@
+import java.lang.Runnable;
+import java.lang.ThreadGroup;
+import java.util.*;
+public class Main {
+    public static void main(String[] args)throws Exception  {
+    Scanner sc=new Scanner(System.in);
+        System.out.println("enter row and column");
+    int a=sc.nextInt(),b=sc.nextInt();
+        int arr[][]=new int[a][b];
+    for(int i=0;i<a;i++){
+        for(int j=0;j<b;j++){
+            arr[i][j]=sc.nextInt();
+        }
+        System.out.println("enter next row");
+    }
+    int c=0;String s="";
+    for(int i=0;i<a;i++){
+    for (int j=0;j<b;j++){
+        if(arr[j][i]==1){
+          c++;
+        }
+        else c=0;
+
+        }s=s+String.valueOf(c);
+
+    }int f=0;
+    for(int i=0;i<s.length()-1;i++){
+        int d=Integer.valueOf(String.valueOf(s.charAt(i)));
+        int e=Integer.valueOf(String.valueOf(s.charAt(i+1)));
+   if(d!=0 && d!=1 && e!=0 && e!=1 ){
+       if(d>=e)f=e;
+       else f=d;
+   }
+
+    }
+        System.out.println(f);
+}}
