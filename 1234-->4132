@@ -1,0 +1,25 @@
+import java.lang.Runnable;
+import java.lang.ThreadGroup;
+import java.util.*;
+public class Main {
+    public static void main(String[] args)throws Exception  {
+    Scanner sc=new Scanner(System.in);
+       // Input  : {1, 2, 3, 4, 5, 6, 7}
+        //Output : {7, 1, 6, 2, 5, 3, 4}
+        int arr[]=new int[7];int arr1[]=new int[7]; for(int i=0;i<arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+
+        Arrays.sort(arr);
+        int j=0;
+        for(int i=1;i<arr.length;i++,i++,j++){
+            arr1[i]=arr[j];
+        }
+        int k=arr.length-1;
+        for(int i=0;i<arr.length;i++,i++,k--){
+            arr1[i]=arr[k];
+        }
+        for(int f:arr1){
+            System.out.println(f);
+        }
+    }}
