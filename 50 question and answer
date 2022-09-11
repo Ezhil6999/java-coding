@@ -158,6 +158,28 @@ public class Main {
         }else System.out.println("even");
           }
 }
+//7. Palindrome Check
+boolean result = true;
+	int length = input.length();
+	for(int i=0; i < length/2; i++) {
+		if(input.charAt(i) != input.charAt(length-i-1)) {
+			result = false;
+			break;
+		}
+	}
+    
+    //How to remove leading and trailing whitespaces from a string
+    String s = "  abc  def\t";
+		
+s = s.strip();
+		
+System.out.println(s);
+
+//10. Sorting an array in Java?
+
+int[] array = {1, 2, 3, -1, -2, 4};
+Arrays.sort(array);
+System.out.println(Arrays.toString(array));
 
 
 
