@@ -1,0 +1,49 @@
+import java.util.*;
+import java.io.*;
+public class Hello {
+    HashMap<Integer,node> map=new HashMap<Integer,node>();
+    static int i=1;
+    public class node{
+        String name;
+        int age,rollno;
+        node(String name,int age,int rollno){
+            this.name=name;
+            this.age=age;
+            this.rollno=rollno;
+        }
+    }
+
+
+    void insert(String name,int age,int rollno) {
+        node n=new node(name,age,rollno);
+        map.put(i, n);
+        i++;
+    }
+
+    void display(int key) {
+        node a=map.get(key);
+        System.out.println("name: "+a.name+"\nage: "+a.age+"\nrollno: "+a.rollno);
+    }
+    public static void main(String[] args)throws IOException {
+        Scanner sc=new Scanner(System.in);
+        Hello obj=new Hello();
+        int b=3;
+        while(b-->0) {
+            System.out.println("Enter the name: ");
+            String name=sc.nextLine();
+            if(name.equals("break")) {
+                break;
+            }
+            System.out.println("Enter the age: ");
+            int age=sc.nextInt();
+            System.out.println("Enter the rollno: ");
+            int rollno=sc.nextInt();
+            sc.nextLine();
+            obj.insert(name,age,rollno);
+        }
+        System.out.println("No of records: "+(i-1));
+        System.out.println("Enter the key: ");
+        int key = sc.nextInt();
+        obj.display(key);
+
+    }}
