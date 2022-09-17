@@ -1,0 +1,34 @@
+import java.lang.Runnable;
+import java.lang.ThreadGroup;
+import java.util.*;
+public class Main {
+    public static void main(String[] args)throws Exception  {
+    Scanner sc=new Scanner(System.in);
+    String s=sc.nextLine();
+    char[] ch=s.toCharArray();
+    int k=s.length();
+        System.out.println(k);
+    char[] arr=new char[s.length()];
+    for(int i=0;i<s.length();i++){
+        if(ch[i]>='a'&& ch[i]<='z'){
+            arr[i]=ch[i];
+        }
+        else if(ch[i]=='('){
+            for(int j=k-1;j>=i;j--){
+                if(ch[j]==')'){
+                    arr[i]=ch[i];
+                    arr[j]=ch[j];
+                    k=j;
+                    break;
+
+
+                }
+            }
+        }
+    }
+        for(int i=0;i<s.length();i++){
+           if(arr[i]>='a'&& arr[i]<='z' || arr[i]=='('|| arr[i]==')'){
+            System.out.print(arr[i]);
+        }}
+    }
+}
