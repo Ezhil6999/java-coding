@@ -1,0 +1,32 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Ezhil
+{
+//    Petrol in car: 2 Liters
+//    Petrol bunks: A B C
+//    Distance from petrol each petrol bunks: 1, 5, 3
+//    Capacities of each petrol bunk: 6, 4, 2
+//
+//    Output:
+//    Remaining petrol in car is 5 liters
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        Scanner a=new Scanner(System.in);
+        System.out.println("enter the petrol in a car at home :");
+        int pc1=a.nextInt();
+        System.out.println(" petrol bunk : A B C");
+        int [] arr=new int[3];
+        int [] arrr=new int[3];
+        for(int i=0;i<3;i++){
+            System.out.println("enter distance of the petrol bunk "+i);
+            arr[i]=a.nextInt();
+            System.out.println("Capacities of the petrol bunk"+i);
+            arrr[i]=a.nextInt();
+        }
+        for(int i=0;i<3;i++){
+                pc1=pc1-arr[i]+arrr[i];
+        }
+        System.out.println("Remaining petrol in car is "+pc1+" liters");
+    }
+}
