@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+//luke shaw
+//wayne rooney
+//rooney ronaldo
+//shaw rooney
+//
+//ronaldo
+//
+//output: ronaldo  :2
+class Ezhil
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        Scanner a=new Scanner(System.in);
+       String[][] arr=new String[4][2];
+       for(int i=0;i<4;i++){
+           for(int j=0;j<2;j++){
+               arr[i][j]=a.next();
+           }
+       }
+       String s=a.next();
+       String k="";
+       int count=0;
+       for(int i=0;i<4;i++){
+           if(arr[i][1].equals(s)){
+               k=arr[i][0];
+           }
+       }
+        for(int i=0;i<4;i++){
+            if(arr[i][1].equals(k)){
+                count++;
+            }
+        }
+        System.out.println(k+"  :"+ count);
+    }
+}
