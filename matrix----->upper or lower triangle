@@ -1,0 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args)throws Exception  {
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        int arr[][]=new int[a][b];
+        for(int i=0;i<a;i++){
+            for(int j=0;j<b;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        if(arr[a-1][0]==0) System.out.println("Upper Triangular Matrix");
+        else System.out.println("Lower Triangular Matrix ");
+    }
+}
