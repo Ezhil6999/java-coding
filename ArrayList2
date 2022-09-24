@@ -1,0 +1,36 @@
+import java.util.Arrays;
+
+public class Array {
+    int [] a;
+    int co=0;
+    int count=0;
+    public Array(int i) {
+        a=new int[i];
+        co=i;
+    }
+    public boolean add(int i){
+        if(count==a.length){
+            co=co+1;
+            int arr[]=new int[co];
+            for(int j=0;j<a.length;j++){
+                arr[j]=a[j];
+            }a=arr;
+        }
+        a[count++]=i;
+        return true;
+    }
+   public void remove( int i){
+        for(int j=0;j<a.length;j++){
+                if(a[j]==i){
+                    co=co-1;
+                    int arr[]=new int[co];
+
+                }
+
+            }
+        }
+
+    public void print(){
+        for(int i:a) System.out.print(" "+i);
+    }
+}
