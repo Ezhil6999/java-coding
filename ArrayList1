@@ -1,0 +1,21 @@
+import java.util.*;
+public class Hello{
+    public static void main(String args[]) {
+        //ArrayList
+        int[]a=new int[3];
+        System.out.println(Arrays.toString(a));
+        a[0]=34;
+        System.out.println(Arrays.toString(a));
+        int b=a.length;
+        System.out.println(b);
+        System.out.println("----------------------------------------------");
+        Array c=new Array(3);
+        c.add(20);
+        c.add(30);
+        c.add(40);
+        c.add(50);
+        c.add(60);
+        c.remove(30);
+        c.print();
+    }
+}
