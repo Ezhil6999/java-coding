@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class HashMapComp {
+    //Hashmap and hashset not allow dublicate keys
+    public static void main(String[] args) {
+        HashMap<Integer,String> map1=new HashMap<>();
+        map1.put(1,"A");
+        map1.put(2,"B");
+        map1.put(3,"C");
+
+        HashMap<Integer,String> map2=new HashMap<>();
+        map2.put(1,"A");
+        map2.put(2,"B");
+        map2.put(3,"C");
+
+        HashMap<Integer,String> map3=new HashMap<>();
+        map3.put(1,"A");
+        map3.put(2,"B");
+        map3.put(3,"C");
+        map3.put(4,"D");
+       //1 on the basic of key value use equals method
+        System.out.println(map1.equals(map2));//true
+        System.out.println(map1.equals(map3));//false
+        //2. compare hashmaps for the same keys: keySet()--prints--->1,2,3 for map1;
+        System.out.println(map1.keySet());
+        System.out.println(map1.keySet().equals(map2.keySet()));
+        System.out.println(map1.keySet().equals(map3.keySet()));
+        //find out extra keys
+        HashSet<Integer> combine=new HashSet<>(map1.keySet());
+        combine.addAll(map3.keySet());
+        combine.removeAll(map1.keySet());
+        System.out.println(combine);
+        //combare based on the value
+        //1.) dublicates are not allow
+        System.out.println(new ArrayList<>(map2.values()).equals(new ArrayList<>(map3.values())));//false a,b,c   compared with  a b c d
+        System.out.println(new ArrayList<>(map2.values()).equals(new ArrayList<>(map1.values())));//true a,b,c compared with a,b,c
+
+        System.out.println(new HashSet<>(map1.values()).equals(new HashSet<>(map2.values())));//true a,b,c-->a,b,c
+        System.out.println(new HashSet<>(map1.values()).equals(new HashSet<>(map3.values())));//false a,b,c,d--->a,b,c
+
+    }
+}
