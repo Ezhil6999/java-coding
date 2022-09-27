@@ -40,16 +40,5 @@ public class HashMapComp {
         System.out.println(new HashSet<>(map1.values()).equals(new HashSet<>(map2.values())));//true a,b,c-->a,b,c
         System.out.println(new HashSet<>(map1.values()).equals(new HashSet<>(map3.values())));//false a,b,c,d--->a,b,c
         
-      {       LinkedList<Integer> a=new LinkedList();
-     a.add(10);
-     a.add(20);
-     a.add(30);
-     a.add(40);
-     a.add(50);
-     a.add(60);
-
-      a.stream().forEach(ela-> System.out.println(ela));}
-
-
-    }
+     
 }
