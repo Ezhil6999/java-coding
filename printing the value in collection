@@ -1,0 +1,23 @@
+ {       LinkedList<Integer> a=new LinkedList();
+     a.add(10);
+     a.add(20);
+     a.add(30);
+     a.add(40);
+     a.add(50);
+     a.add(60);
+
+      a.stream().forEach(ela-> System.out.println(ela));}
+
+//........................................................................................
+    
+    for(int i=0;i<a.size();i++){
+          System.out.println(a.get(i));
+      }
+      for(int s:a){
+          System.out.println(s);
+      }
+//...........................................................................................
+   Iterator<Integer> it=a.iterator();
+    while(it.hasNext()){
+        System.out.println(it.next());
+    }
