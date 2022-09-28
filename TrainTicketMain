@@ -1,0 +1,122 @@
+import java.util.*;
+public class TrainTicketMain {
+    public static void bookTickets (TrainTicketPassenger p) {
+        TrainTicketTicketBook tb = new TrainTicketTicketBook();
+
+        if (TrainTicketTicketBook.aWL == 0) {
+            System.out.println("-------------------No Tickets Available---------------------");
+        } else if (p.age>60 && TrainTicketTicketBook.aLB>0) {
+            System.out.println("you are a senior citizen so,we are alloting Lower berth");
+            tb.bookTicket(p, TrainTicketTicketBook.lBP.get(0), "L");
+            TrainTicketTicketBook.lBP.remove(0);
+            TrainTicketTicketBook.aLB--;
+            System.out.println("------Lower Berth Given-------");
+        }
+
+        else if (p.bp.equals("L") && TrainTicketTicketBook.aLB > 0 || (p.bp.equals("M") && TrainTicketTicketBook.aMB > 0) || p.bp.equals("U") && TrainTicketTicketBook.aUB > 0) {
+            if (p.bp.equals("L")) {
+                System.out.println("------Lower Berth Given-------");
+                tb.bookTicket(p, TrainTicketTicketBook.lBP.get(0), "L");
+                TrainTicketTicketBook.lBP.remove(0);
+                TrainTicketTicketBook.aLB--;
+            } else if (p.bp.equals("M")) {
+                System.out.println("------Middle Berth Given-------");
+                tb.bookTicket(p, TrainTicketTicketBook.MBP.get(0), "M");
+                TrainTicketTicketBook.MBP.remove(0);
+                TrainTicketTicketBook.aMB--;
+            } else if (p.bp.equals("U")) {
+                System.out.println("---------Upper Birth Given---------------");
+                tb.bookTicket(p, TrainTicketTicketBook.UBP.get(0), "U");
+                TrainTicketTicketBook.UBP.remove(0);
+                TrainTicketTicketBook.aUB--;
+            }
+        } else if (TrainTicketTicketBook.aLB > 0) {
+            System.out.println("------Lower Berth Given-------");
+            tb.bookTicket(p, TrainTicketTicketBook.lBP.get(0), "L");
+            TrainTicketTicketBook.lBP.remove(0);
+            TrainTicketTicketBook.aLB--;
+        } else if (TrainTicketTicketBook.aMB > 0) {
+            System.out.println("------Middle Berth Given-------");
+            tb.bookTicket(p, TrainTicketTicketBook.MBP.get(0), "M");
+            TrainTicketTicketBook.MBP.remove(0);
+            TrainTicketTicketBook.aMB--;
+        } else if (TrainTicketTicketBook.aUB > 0) {
+            System.out.println("---------Upper Birth Given---------------");
+            tb.bookTicket(p, TrainTicketTicketBook.UBP.get(0), "U");
+            TrainTicketTicketBook.UBP.remove(0);
+            TrainTicketTicketBook.aUB--;
+        } else if (TrainTicketTicketBook.aRAC>0) {
+            tb.racTicket(p,TrainTicketTicketBook.racP.get(0),"RAC");
+            TrainTicketTicketBook.racP.remove(0);
+            TrainTicketTicketBook.aRAC--;
+            System.out.println("-----rac Booked------");
+        } else if (TrainTicketTicketBook.aWL>0){
+            {tb.waitingList(p,TrainTicketTicketBook.wlP.get(0),"WL");
+             TrainTicketTicketBook.wlP.remove(0);
+                TrainTicketTicketBook.aWL--;
+                System.out.println("-----waiting seat booked----");
+            }
+        }
+    }
+
+    public static void cancelTicket(int id){
+      TrainTicketTicketBook tb=new TrainTicketTicketBook();
+      if(!tb.StoredValue.containsKey(id)){
+          System.out.println("Passenger id is not found");
+      }else{
+          tb.cancelTicket(id);
+      }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        boolean tr=true;
+        while(tr){
+            System.out.println("1.)Book ticket\n2.)Cancel\n3.)Available Tickets\n4.)Booked Tickets \n5.)Exit");
+            int int1=sc.nextInt();
+            switch (int1){
+                case 1:
+                    System.out.println("enter passenger name");
+                    String name=sc.next();
+                    System.out.println("enter passenger age");
+                    int age=sc.nextInt();
+                    System.out.println("enter passenger gender[M or F]");
+                    String gender=sc.next();
+                    if(gender.equals("F")){
+                        System.out.println("1.If you have a child,Press 1\n2.If you haven't a child,press 2");
+                         int gchoice=sc.nextInt();
+                         if(gchoice==1){
+                             System.out.println("Enter your child name");
+                             String cname= sc.next();
+                             System.out.println("enter your child age");
+                             int cage=sc.nextInt();
+                             System.out.println("enter passengers birth preference[L or M or U]");
+                             String bp=sc.next();
+                             TrainTicketPassenger p=new TrainTicketPassenger(name,age,gender,cname,cage,bp);
+                             bookTickets(p);
+                         }
+                    }
+                    System.out.println("enter passengers birth preference[L or M or U]");
+                    String bp=sc.next();
+                    TrainTicketPassenger p=new TrainTicketPassenger(name,age,gender,bp);
+                    bookTickets(p);
+                    break;
+                case 2:
+                    System.out.println("Enter passenger id ");
+                    int id=sc.nextInt();
+                    cancelTicket(id);//cancel
+                    break;
+                case 3:
+                    TrainTicketTicketBook tb=new TrainTicketTicketBook();
+                    tb.availableTickets();//Available
+                    break;
+                case 4:
+                    TrainTicketTicketBook.passengersDetail();
+                    break;//booked
+                case 5:
+                    tr=false;
+                    break;
+            }
+        }
+    }
+}
