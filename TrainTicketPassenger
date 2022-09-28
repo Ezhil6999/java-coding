@@ -1,0 +1,31 @@
+public class TrainTicketPassenger {
+    static int id=1;
+    String name;
+    int age;
+    String gender;
+    String bp;
+    int passengerId=id++;
+    String alloted;
+    int number;
+    String cname;
+    int cage;
+    public TrainTicketPassenger(String name, int age, String gender, String bp) {
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+        this.bp=bp;
+        alloted="";
+        number=-1;
+    }
+
+    public TrainTicketPassenger(String name, int age, String gender, String cname, int cage, String bp) {
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+        this.bp=bp;
+        alloted="";
+        number=-1;
+        this.cage=cage;
+        this.cname=cname;
+    }
+}
