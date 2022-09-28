@@ -1,0 +1,119 @@
+import java.util.*;
+public class TrainTicketTicketBook {
+    static  int aLB=2;
+    static  int aMB=1;
+    static  int aUB=1;
+    static  int aRAC=1;
+    static int aWL=1;
+
+    static List<Integer> lBP=new ArrayList<>(Arrays.asList(1,2));
+    static List<Integer> MBP=new ArrayList<>(Arrays.asList(1));
+    static List<Integer> UBP=new ArrayList<>(Arrays.asList(1));
+    static List<Integer> racP=new ArrayList<>(Arrays.asList(1));
+    static List<Integer> wlP=new ArrayList<>(Arrays.asList(1));
+
+    static Queue<Integer> wlList=new LinkedList<>();
+    static Queue<Integer> racList=new LinkedList<>();
+    static List<Integer> bookedTicketList=new ArrayList<>();
+    static Map<Integer,TrainTicketPassenger> StoredValue=new HashMap<>();
+
+    public void bookTicket(TrainTicketPassenger p,int snumber,String allotedBerth){
+        p.number=snumber;
+        p.alloted=allotedBerth;
+        StoredValue.put(p.passengerId,p);
+        bookedTicketList.add(p.passengerId);
+        System.out.println("Passenger id : "+p.passengerId);
+        System.out.println("Passenger name : "+p.name);
+        System.out.println("Passenger age : "+p.age);
+        System.out.println("Passenger gender : "+p.gender);
+        System.out.println("Alloted birth : "+snumber+allotedBerth);
+        System.out.println("-------------------------------Booked Successfully---------------------------------");
+
+    }
+    public void racTicket(TrainTicketPassenger p,int snumber,String RACBerth){
+        p.number=snumber;
+        p.alloted=RACBerth;
+        StoredValue.put(p.passengerId,p);
+        racList.add(p.passengerId);
+        System.out.println("Passenger id : "+p.passengerId);
+        System.out.println("Passenger name : "+p.name);
+        System.out.println("Passenger age : "+p.age);
+        System.out.println("Passenger gender : "+p.gender);
+        System.out.println("Alloted birth : "+snumber+RACBerth);
+        System.out.println("-------------------------------Rac seat Booked Successfully---------------------------------");
+
+    }
+    public void waitingList( TrainTicketPassenger p,int snumber,String waitBerth){
+        p.number=snumber;
+        p.alloted=waitBerth;
+        StoredValue.put(p.passengerId,p);
+        wlList.add(p.passengerId);
+        System.out.println("Passenger id : "+p.passengerId);
+        System.out.println("Passenger name : "+p.name);
+        System.out.println("Passenger age : "+p.age);
+        System.out.println("Passenger gender : "+p.gender);
+        System.out.println("Alloted birth : "+snumber+waitBerth);
+        System.out.println("------------you r in waiting List-------------------waiting seat Booked Successfully---------------------------------");
+
+    }
+    public static void passengersDetail(){
+        if(StoredValue.size()==0) System.out.println("No Passengers detail Found");
+        else {
+            for(TrainTicketPassenger e : StoredValue.values()){
+                System.out.println("Passenger id : "+e.passengerId);
+                System.out.println("Passenger Name : "+e.name);
+                System.out.println("Passenger Gender: "+e.gender);
+                System.out.println("passenger age : "+e.age);
+                System.out.println("passenger alloted berth : "+e.number+e.alloted);
+                System.out.println("**************************************************************");
+            }
+        }
+    }
+    public void cancelTicket(int passengerid) {
+        TrainTicketPassenger p=StoredValue.get(passengerid);
+        StoredValue.remove(passengerid);
+        int pnumber=p.number;
+        System.out.println("-----------------------Cancelled Successfull*******************");
+        if(p.alloted.equals("L")){
+          lBP.add(pnumber);
+          aLB++;
+        } else if (p.alloted.equals("M")) {
+            MBP.add(pnumber);
+            aMB++;
+        } else if (p.alloted.equals("U")) {
+            UBP.add(pnumber);
+            aUB++;
+        }
+        if(racList.size()>0){
+            TrainTicketPassenger passfromRAC=StoredValue.get(racList.poll());
+            int pracsnumber=passfromRAC.number;
+            racP.add(pracsnumber);
+            aRAC++;
+            racList.remove(passfromRAC.passengerId);
+            if(wlList.size()>0){
+                TrainTicketPassenger pfwl=StoredValue.get(wlList.poll());
+                int pwlnumber=pfwl.number;
+                aWL--;
+                wlList.remove(pfwl.passengerId);
+                wlP.add(pwlnumber);
+                pfwl.number= racP.get(0);
+               pfwl.alloted="RAC";
+                racP.remove(0);
+                racList.add(pfwl.passengerId);
+                aWL++;
+                aRAC--;
+            }
+            TrainTicketMain.bookTickets(passfromRAC);
+        }
+    }
+
+    public static void availableTickets() {
+        System.out.println("Available Lower berth Tickets : "+aLB);
+        System.out.println("Available Middle berth Tickets : "+aMB);
+        System.out.println("Available Upper berth Tickets : "+aUB);
+        System.out.println("Available RAC Tickets : "+aRAC);
+        System.out.println("Available Waiting passenger : "+aWL);
+
+
+    }
+}
