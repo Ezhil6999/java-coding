@@ -1,0 +1,32 @@
+import java.io.IOException;
+import java.util.*;
+public class Main1 {
+    public static void main(String[] args) throws IOException {
+        Scanner sc=new Scanner(System.in);
+      CustomerFileHandler cf=new CustomerFileHandler();
+      boolean t=true;
+      while(t){
+          System.out.println("1.)Add Customer\n4.)exit");
+      int a=sc.nextInt();
+      switch (a){
+          case 1:
+              cf.intialize();
+              System.out.println("enter customer name");
+              sc.nextLine();
+              String name=sc.nextLine();
+              System.out.println("enter Password");
+              String password=sc.nextLine();
+              System.out.println("reenter the password ");
+              String repassword=sc.nextLine();
+              cf.addCustomer(name,password,repassword);
+              break;
+          case 2:
+              break;
+          case 4:
+              t=false;
+              break;
+
+          }
+      }
+    }
+}
