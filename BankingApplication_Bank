@@ -1,0 +1,8 @@
+public class Bank {
+   public static Customer[]customer=new Customer[20];
+   public static int count;
+   public static long accountnumber;
+   public static int custid;
+   public static final int BALENCE=10000;
+}
+//ADD With the FILE IN LINK
