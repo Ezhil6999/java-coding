@@ -1,0 +1,22 @@
+import java.util.*;
+public class Customer {
+    public int CustomerId;
+    public String name;
+   public double balence;
+   public String password;
+   public long accountId;
+
+    @Override
+    public String toString() {
+        return CustomerId+" "+accountId+" "+name+" "+balence+" "+password;
+    }
+
+    Customer(int customerId, String name, double balence, String password, long accountId){
+        this.CustomerId=customerId;
+        this.accountId=accountId;
+        this.name=name;
+        this.balence=balence;
+        this.password=password;
+    }
+
+}
