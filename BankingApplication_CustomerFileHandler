@@ -1,0 +1,85 @@
+import java.io.*;
+import java.util.Arrays;
+import java.lang.*;
+public class CustomerFileHandler {
+    Customer []customer;
+    private static String filename = "Bankfile.txt";
+
+    public  void intialize() {
+
+        customer=new Customer[20];
+        File file = new File("G:\\My Drive\\notpad\\waste.txt");
+        FileReader fileReader= null;
+        try {
+            fileReader = new FileReader(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BufferedReader reader = new BufferedReader(fileReader);
+        String coustomerinfo = null;
+        try {
+            coustomerinfo = reader.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        int count=0;
+        do{
+            customer[count++]=costomerdiv(coustomerinfo);
+            try {
+                coustomerinfo= reader.readLine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }while(coustomerinfo!=null);
+        Bank.customer=customer;
+        Bank.count=count-1;
+        Bank.accountnumber=customer[count-1].accountId;
+        Bank.custid=customer[count-1].CustomerId;
+       // fileReader.close();
+    }
+
+    private static Customer costomerdiv(String coustomerinfo) {
+        String[] cu=coustomerinfo.split(" ");
+        Customer cust=new Customer(
+                Integer.parseInt(cu[0]),
+                cu[2],
+                Double.parseDouble(cu[3].toString()),
+                cu[4],
+                Integer.parseInt(cu[1].toString())
+
+        );
+        return cust;
+    }
+
+    public void addCustomer(String name, String password, String repassword) throws IOException {
+      if(!password.equals(repassword)) {
+          System.out.println("mismatch password");
+      }else{
+          Bank.count++;
+          Bank.custid++;
+          Bank.accountnumber++;
+          Customer cust=new Customer(Bank.custid,name,Bank.BALENCE,password,Bank.accountnumber);
+                  customer[Bank.count]=cust;
+         writeFile(customer[Bank.count]);
+
+      }
+    }
+    private void writeFile(Customer customer)  {
+        File file = new File("G:\\My Drive\\notpad\\waste.txt");
+        FileWriter write= null;
+        try {
+            write = new FileWriter(file,true);
+            write.write("\n"+customer.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                write.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+       }
+    }
