@@ -1,0 +1,26 @@
+import java.util.*;
+import java.math.*;
+import java.util.stream.Collectors;
+
+public class Hello {
+    public static void main(String args[]) {
+    List <String> strings=Arrays.asList("ab","aba","xyz","mno","xyz","pop");
+    String s=strings.stream().filter(x->x.length()>0&& x.endsWith(String.valueOf(x.charAt(0)))).collect(Collectors.joining(","));
+        System.out.println(s);
+    }
+}
+
+
+                  OR           
+                  
+                  
+import java.util.*;
+import java.math.*;
+import java.util.stream.Collectors;
+
+public class Hello {
+    public static void main(String args[]) {
+    List <String> strings=Arrays.asList("ab","aba","xyz","mno","xyz","pop");
+    strings.stream().filter(x->x.length()>0&& x.endsWith(String.valueOf(x.charAt(0)))).forEach(System.out::println);
+    }
+}                  
