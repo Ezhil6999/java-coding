@@ -1,0 +1,20 @@
+111111111111111111111111111111111111--Finding the sting is available or not using optional--11111111111111111111111111111111111111111111111111
+
+import java.util.*;
+import java.math.*;
+import java.util.stream.Collectors;
+
+public class Hello {
+    public static void main(String args[]) {
+          String str=null;
+          Optional<String> optional=Optional.ofNullable(str);
+          if(optional.isPresent()) {
+              System.out.println("Value :"+optional.get());}
+              else{
+            System.out.println(optional.orElse("Value is not available"));
+              }
+
+    }
+}
+
+222222222222222222222222222222222222--
