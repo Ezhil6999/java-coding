@@ -1,0 +1,21 @@
+import java.util.*;
+import java.lang.*;
+public class Hello
+{
+    //123-->2,  1234-->2.5
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int value=sc.nextInt();
+        String s=""+value;
+        char[]ch=s.toCharArray();
+        int len=s.length();
+        int m=Character.getNumericValue((ch[(len/2)-1]));
+        int n=Character.getNumericValue(((ch[len/2])));
+        if(len%2!=0){
+            System.out.println(ch[len/2]);
+        }else if(len%2==0){
+            float k=(m+n);
+            System.out.println((float)k/2);
+        }
+    }
+}
