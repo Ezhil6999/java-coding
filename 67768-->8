@@ -1,0 +1,38 @@
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class Hello {
+//10234432089-->189, 45679976423-->45423, 87058850723-->823
+       public static void main(String[] args) {
+           Scanner sc=new Scanner(System.in);
+           long lo=sc.nextLong();
+           String s=""+lo;
+           int len=s.length();
+           char[]ch1=s.toCharArray();
+           char[]ch=s.toCharArray();
+           char[] arr=new char[s.length()];
+           int count=0;
+           for(int i=0;i<ch.length-1;i++){
+               if(ch[i]==ch[i+1] && ch[i]!=' ') {
+                   ch[i] = ' ';
+                   ch[i + 1] = ' ';
+                   count=count+2;
+                   i = 0;
+               }
+               int k=0;
+                       for(int j=0;j<ch.length;j++){
+                           if(ch[j]!=' '){
+                               arr[k]=ch[j];
+                              k++;
+
+                           }
+                       }
+                   ch=arr;
+               }
+       int val=ch.length-count;
+           for(int i=0;i<val;i++){
+              if(ch[i]!=' ')
+               System.out.print(ch[i]);
+           }
+       }
+}
