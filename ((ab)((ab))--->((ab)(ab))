@@ -1,0 +1,43 @@
+public class Hello {
+    public static void main(String[] args)throws Exception  {
+       //((ab)((ab))--->((ab)(ab))
+       String s="((ab)((ab))";
+       char []ch=s.toCharArray();
+       int count=0;
+       int counts=0;
+       String ss="";
+       String k=" ";
+       int FBcount=0;
+       int LBcount=0;
+        char [] ar=new char[s.length()];
+       int len=s.length()-1;
+       for(int i=0;i<s.length();i++){
+           if(ch[i]=='(')count++;
+           if(ch[i]==')')counts++;
+           if(ch[i]>='a'&&ch[i]<='z' && ch[i-1]=='('){
+               ss=ss+(i)+k;
+               if(ch[i]=='('&& ch[i+1]=='(')FBcount++;
+               if(ch[len-i]==')'&& ch[len-1-i]==')')LBcount++;
+           }
+
+       }
+       if(count==counts) System.out.println("String is balenced");
+       else {
+           len=s.length()-1;
+           System.out.println(ss);
+           String[] arr=ss.split(" ");
+          if(LBcount==FBcount){
+              int value=0;
+              while(LBcount==value){
+                  ar[value]=ch[value];
+                  ar[len-value]=ch[len-value];
+              }
+          }
+
+
+       }
+       for(int i=0;i< args.length;i++){
+           System.out.println(ar[i]);
+       }
+    }
+}
