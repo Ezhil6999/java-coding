@@ -1,0 +1,58 @@
+import java.awt.print.Book;
+import java.util.ArrayList;
+
+public class Flights {
+    static int id=0;
+    int flightid;
+    int tickets;
+    int price;
+    ArrayList<Integer> Passengerids;
+    ArrayList<String> PassengerDetails;
+    ArrayList<Integer> BookTicketsPerPassenger;
+    ArrayList<Integer> passengerCost;
+    Flights(){
+        id+=1;
+        flightid=id;
+        tickets=50;
+        price=5000;
+        passengerCost=new ArrayList<Integer>();
+        Passengerids=new ArrayList<Integer>();
+        PassengerDetails=new ArrayList<String>();
+        BookTicketsPerPassenger=new ArrayList<Integer>();
+    }
+
+    public void flightSummary() {
+        System.out.println("Flifht ID "+flightid+" -- Remaining Tickets"+ tickets +" -- Current Tickets Price "+ price);
+    }
+
+    public void addDetsils(String fdetails, int t, int passengerid) {
+        PassengerDetails.add(fdetails);
+        passengerCost.add(t*price);
+        Passengerids.add(passengerid);
+        BookTicketsPerPassenger.add(t);
+        price+=t*200;
+        tickets-=t;
+        System.out.println("-------------Booked Success-------------");
+    }
+
+    public void print() {
+        System.out.println(" Flight "+flightid+"-->");
+        for(String s:PassengerDetails){
+            System.out.println(s);
+        }
+    }
+
+    public void removeId(int id) {
+        int index=Passengerids.indexOf(id);
+        int ticketsCancel=BookTicketsPerPassenger.get(index);
+        price-=ticketsCancel*200;
+        tickets+=ticketsCancel;
+        PassengerDetails.remove(index);
+        passengerCost.remove(index);
+        Passengerids.remove(index);
+        BookTicketsPerPassenger.remove(index);
+
+        System.out.println("-------------Removed Success-------------");
+
+    }
+}
