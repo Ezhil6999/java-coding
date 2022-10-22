@@ -1,0 +1,83 @@
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class FlightticketBooking {
+    public static void main(String[] args) {
+        ArrayList<Flights> flight=new ArrayList<Flights>();
+        for(int i=0;i<2;i++){
+            flight.add(new Flights());
+        }
+        int passengerid=1;
+        while(true){
+            Scanner sc=new Scanner(System.in);
+            System.out.println("1-->Booking\n2-->Cancel\n3-->Print");
+            int value=sc.nextInt();
+            switch (value){
+                case 1:{
+                    System.out.println("Enter Flight ID");
+                    int fid=sc.nextInt();
+                    if(flight.size()<fid){
+                        System.out.println("Invalid Flight ID");
+                        break;
+                    }
+                    Flights currentFlight=null;
+                    for(Flights f:flight){
+                        if(f.flightid==fid){
+                            currentFlight=f;
+                            f.flightSummary();
+                            break;
+                        }
+                    }
+                    System.out.println("Enter number of Tickets");
+                    int t=sc.nextInt();
+                    if(currentFlight.tickets<t){
+                        System.out.println("Not Enough Tickets");
+                        break;
+                    }
+                    book(currentFlight,t,passengerid);
+                    passengerid=passengerid+1;
+                    break;}
+                case 2:{
+                    System.out.println("Enter Flight ID");
+                    int fid=sc.nextInt();
+                    if(flight.size()<fid){
+                        System.out.println("Invalid Flight ID");
+                        break;
+                    }
+                    Flights currentFlight=null;
+                    for(Flights f:flight){
+                        if(f.flightid==fid){
+                            currentFlight=f;
+                            f.flightSummary();
+                            break;
+                        }
+                    }
+                    System.out.println("Enter Passenger ID");
+                    int id=sc.nextInt();
+                    cancelTicket(currentFlight,id);
+                    break;
+                }
+                case 3:{
+                    for(Flights f:flight){
+                        f.print();
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    private static void cancelTicket(Flights currentFlight, int id) {
+        currentFlight.removeId(id);
+        currentFlight.flightSummary();
+        currentFlight.print();
+    }
+
+    private static void book(Flights currentFlight, int t, int passengerid) {
+      String Fdetails="Passenger ID "+passengerid+" Number of Tickets Booked "+t+" Total Price " +(currentFlight.price)*t;
+      currentFlight.addDetsils(Fdetails,t,passengerid);
+      currentFlight.flightSummary();
+      currentFlight.print();
+    }
+}
