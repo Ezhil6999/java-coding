@@ -1,0 +1,28 @@
+import java.io.IOException;
+import java.util.*;
+public class Main1 {
+    public static void main(String[] args) throws IOException {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+//        Input: 12345
+//        Output:
+//        1       5
+//          2   4
+//            3
+//          2   4
+//        1       5
+        int k=0,l=s.length()-1;
+        for(int i=0;i<s.length();i++ ){
+         for(int j=0;j<s.length();j++){
+             if(i==j){
+                 System.out.print(s.charAt(k));
+                 k++;
+             } else if (i+j==s.length()-1) {
+                 System.out.print(s.charAt(l));
+                 l--;
+             }else System.out.print(" ");
+         }
+            System.out.println();
+        }
+    }
+}
