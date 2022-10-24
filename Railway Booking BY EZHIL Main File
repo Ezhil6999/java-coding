@@ -1,0 +1,237 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.io.IOException;
+import java.util.*;
+public class Main1 {
+    static ArrayList<Passenger> passengerDetails=new ArrayList<Passenger>();
+    static int VLB=2;
+    static int VMB=1;
+    static int VUB=1;
+    static int VRAC=1;
+    static int VWL=1;
+    static int LB=VLB;
+    static int MB=VMB;
+    static int UB=VUB;
+    static int RAC=VRAC;
+    static int WL=VWL;
+
+    static List<Integer> lLB=new ArrayList<Integer>(Arrays.asList(1,2));
+    static List<Integer> lMB=new ArrayList<Integer>(Arrays.asList(1));
+    static List<Integer> lUB=new ArrayList<Integer>(Arrays.asList(1));
+
+    static List<Integer> lRAC=new LinkedList<Integer>(Arrays.asList(1));
+    static List<Integer> lWL=new LinkedList<Integer>(Arrays.asList(1));
+    static Queue<Integer> CheckPassengerInWL=new LinkedList<>();
+    static Queue<Integer> CheckPassengerInRAC=new LinkedList<>();
+
+    public static void main(String[] args) throws IOException {
+        Scanner sc=new Scanner(System.in);
+        while(true){
+        System.out.println("Press 1-->for Railway Ticket Booking\n" +
+                "Press 2-->for Cancelling your Booked Tickets\nPress 3-->for View Booked Tickets" +
+                "\nPress 4-->Viewing Available Tickets\n\nEnter your Option(1 or 2 or 3 or 4)");
+        int value=sc.nextInt();
+        switch (value) {
+            case 1: {
+                System.out.println("\nEnter your(Passenger) name : ");
+                sc.nextLine();
+                String name = sc.nextLine();//Name
+                System.out.println("\nEnter your(Passenger) age : ");
+                int age = sc.nextInt();//Age
+                System.out.println("\nEnter your(Pasasenger) Gender : ");
+                char gender = sc.next().charAt(0);//Gender
+                System.out.println("\nEnter your(Passenger) Berth(For Lower berth press L)(For Middle berth press M)(For Upper berth press U)");
+                char berthpreference = sc.next().charAt(0);//Berth Preference
+                Main1 m = new Main1();
+                Passenger p = new Passenger(name, age, gender, berthpreference);
+                m.check(p);
+                passengerDetails.add(p);
+                p.print();
+                break;
+            }
+            case 2:{
+                System.out.println("\nEnter your(Passenger) ID : ");
+                int IDpass=sc.nextInt();
+                for(Passenger p:passengerDetails){
+                    if(p.Passengerid==IDpass){
+                        Main1 m=new Main1();
+                        m.remove(IDpass,p);
+                        int index=passengerDetails.indexOf(p);
+                        passengerDetails.remove(index);
+                    }
+                }
+            }
+            case 3:{
+                for(Passenger h:passengerDetails){
+                    h.print();
+                    break;
+                }
+            }
+            case 4:{
+                System.out.println("\nLower Berth : "+LB);
+                System.out.println("Middle Berth : "+MB);
+                System.out.println("Upper Berth : "+UB);
+                System.out.println("Reserved Seats : "+RAC);
+                System.out.println("Waiting List : "+LB);
+                break;
+            }
+        }
+        }
+    }
+
+    private void remove(int iDpass, Passenger p) {
+        if(p.allotedBerth.equals("L")){
+            p.print();
+            System.out.println("\nBooked Ticket is Canncelled");
+            LB++;
+            lLB.add(p.number);
+            if(RAC==VRAC){
+                p.print();
+                System.out.println("\nBooked Ticket is Canncelled");
+                RAC++;
+                lRAC.add(p.number);}
+            else {
+                p.print();
+                System.out.println("\nBooked Ticket is Canncelled");
+                RAC++;
+                lRAC.add(p.number);
+                int num=CheckPassengerInRAC.poll();
+                Passenger Shifting=null;
+                for(Passenger k: passengerDetails){
+                    if(k.Passengerid==num){
+                        check(k);
+                    }
+                }
+            }
+        } else if(p.allotedBerth.equals("M")){
+
+            if(RAC==VRAC){
+                p.print();
+                System.out.println("\nBooked Ticket is Canncelled");
+                MB++;
+                lMB.add(p.number);}
+            else {
+                p.print();
+                System.out.println("\nBooked Ticket is Canncelled");
+                RAC++;
+                lRAC.add(p.number);
+                int num=CheckPassengerInRAC.poll();
+                Passenger Shifting=null;
+                for(Passenger k: passengerDetails){
+                    if(k.Passengerid==num){
+                        check(k);
+                    }
+                }
+            }
+        }else if(p.allotedBerth.equals("U")){
+
+            if(RAC==VRAC){
+                p.print();
+                System.out.println("\nBooked Ticket is Canncelled");
+                UB++;
+                lUB.add(p.number);}
+            else {
+                p.print();
+                System.out.println("\nBooked Ticket is Canncelled");
+                RAC++;
+                lRAC.add(p.number);
+                int num=CheckPassengerInRAC.poll();
+                Passenger Shifting=null;
+                for(Passenger k: passengerDetails){
+                    if(k.Passengerid==num){
+                        check(k);
+                    }
+                }
+            }
+        } else if (p.allotedBerth.equals("RAC")) {
+            if(WL==VWL){
+            p.print();
+            System.out.println("\nBooked Ticket is Canncelled");
+            RAC++;
+            lRAC.add(p.number);}
+            else {
+                p.print();
+                System.out.println("\nBooked Ticket is Canncelled");
+                RAC++;
+                lRAC.add(p.number);
+                int num=CheckPassengerInWL.poll();
+                Passenger Shifting=null;
+                for(Passenger k: passengerDetails){
+                    if(k.Passengerid==num){
+                        check(k);
+                    }
+                }
+            }
+        } else if (p.allotedBerth.equals("WL")) {
+            p.print();
+            System.out.println("\nBooked Ticket is Canncelled");
+            WL++;
+            lWL.add(p.number);
+        }
+    }
+
+    private void check(Passenger p) {
+        if(WL==0){
+            System.out.println("NO Tickets Available");
+        }
+       else if(LB>0 && p.berthpreference=='L'||MB>0 && p.berthpreference=='M'||UB>0 && p.berthpreference=='U'){
+           if(LB>0){
+               p.number=lLB.get(0);
+               lLB.remove(0);
+               LB--;
+               p.allotedBerth="L";
+               System.out.println("Lower Berth Alloted");
+
+           } else if (MB>0) {
+               p.number=lMB.get(0);
+               lMB.remove(0);
+               MB--;
+               p.allotedBerth="M";
+               System.out.println("Middle Berth Alloted");
+           } else if (UB>0) {
+               p.number=lUB.get(0);
+               lUB.remove(0);
+               UB--;
+               p.allotedBerth="U";
+               System.out.println("Upper Berth Alloted");
+
+           }
+       }else{
+           if(LB>0){
+               p.number=lLB.get(0);
+               lLB.remove(0);
+               LB--;
+               p.allotedBerth="L";
+               System.out.println("Lower Berth Alloted");
+           } else if (MB>0) {
+               p.number=lMB.get(0);
+               lMB.remove(0);
+               MB--;
+               p.allotedBerth="M";
+               System.out.println("Middle Berth Alloted");
+
+           } else if (UB>0) {
+               p.number=lUB.get(0);
+               lUB.remove(0);
+               UB--;
+               p.allotedBerth="U";
+               System.out.println("Upper Berth Alloted");
+
+           } else if (RAC>0) {
+               p.number=lRAC.get(0);
+               lRAC.remove(0);
+               RAC--;
+               p.allotedBerth="RAC";
+               CheckPassengerInRAC.add(p.Passengerid);
+               System.out.println("RAC Alloted");
+
+           } else if (WL>0) {
+               p.number=lWL.get(0);
+               WL--;
+               p.allotedBerth="WL";
+               CheckPassengerInWL.add(p.Passengerid);
+               System.out.println("You are in Waiting List");
+           }
+       }
+    }
+}
