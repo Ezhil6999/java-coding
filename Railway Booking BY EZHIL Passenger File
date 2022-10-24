@@ -1,0 +1,28 @@
+public class Passenger {
+    static int id=1;
+    int Passengerid;
+    String name;
+    char gender;
+    char berthpreference;
+    int age;
+    String allotedBerth;
+    int number;
+
+    public Passenger(String name, int age, char gender, char berthpreference) {
+        this.gender=gender;
+        this.age=age;
+        this.name=name;
+        this.berthpreference=berthpreference;
+        Passengerid=id++;
+        allotedBerth="b";
+        number=1999;
+    }
+
+    public void print() {
+        System.out.println("\nPassenger ID : "+Passengerid);
+        System.out.println("Passenger name : "+name);
+        System.out.println("Passenger Age : "+age);
+        System.out.println("Passenger   : "+allotedBerth+number);
+
+    }
+}
