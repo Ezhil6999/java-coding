@@ -1,0 +1,41 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+class Main{
+   Input: 1
+Output: 0
+
+Input: 2
+Output: 
+0 0
+0 1
+1 0
+1 1
+
+Input: 3
+Output:
+0 0 0
+0 0 1
+0 1 0
+0 1 1
+1 0 0
+1 0 1
+1 1 0
+1 1 1
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int in=sc.nextInt();
+        int mat= (int) Math.pow(2,in);
+        for(int i=0;i<mat;i++) {
+            String binary = Integer.toBinaryString(i);
+            if(binary.length()==1){
+                binary="00"+binary;
+            } else if (binary.length()==2) {
+                binary="0"+binary;
+
+            }
+            System.out.println(binary);
+        }
+    }
+}
