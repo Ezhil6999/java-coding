@@ -1,0 +1,52 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+class Main{
+//    1 1 2 2 2 2 3
+//    Output: 2
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        char[]ch=s.toCharArray();
+        String value="";
+        String count="";
+        int cou=1;
+        Arrays.sort(ch);
+        for(int i=0;i<ch.length-1;i++){
+            if(ch[i]==ch[i+1]){
+                cou++;
+            }else {
+                count=count+cou;
+                value=value+ch[i];
+                cou=1;
+            }
+        }
+        cou=1;
+        for(int i=ch.length-1;i>0;i--){
+            if(ch[i]==ch[i-1]){
+                cou++;
+            }else{
+                count=count+cou;
+            value=value+ch[i];
+                break;}
+        }
+        char[]cout=count.toCharArray();
+        char[]cout1=count.toCharArray();
+        char j=0;
+        int k=0;
+        char []val=value.toCharArray();
+        Arrays.sort(cout1);
+        j=cout1[cout1.length-2];
+       //2345677788
+
+        for(int i=0;i<cout.length;i++){
+             if(cout[i]==j){
+                 k=i;
+                 break;
+             }
+
+        }
+
+        System.out.println(val[k]);
+    }
+}
