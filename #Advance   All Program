@@ -18,3 +18,28 @@ public class Hello {
 }
 
 222222222222222222222222222222222222--
+import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
+
+class Main{
+    //stream
+    //  Terminal Operation
+    //     foreach
+    //     collect
+    //  Non-Terminal Operation
+    //     map
+    //     filter
+    //     sorted
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int count=0;
+        List<Integer> num= Arrays.asList(1,2,3,4,5);
+        //num.stream().map(x->x*2).forEach(System.out::println);
+        //num.stream().filter(x->x>2).forEach(System.out::println);
+      // List<Integer>nu= num.stream().sorted().collect(Collectors.toList());
+     // int min= num.stream().max((x,y)->x-y).get();
+      //  System.out.println(nu+"\n minimum is "+min);
+       // long cout=num.stream().count();
+    }
+}
