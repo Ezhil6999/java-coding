@@ -1,0 +1,35 @@
+import java.util.Arrays;
+import java.util.*;
+class Main{
+    public static void main(String[] args) {
+//        Input:
+//        Number of bits: 12
+//        Bits: 1 0 1 1 0 1 1 0 1 1 1 1
+//        Consecutive K: 2
+//
+//        Output:
+//        1 0 1 1 0 0 1 1 0 0 1 1 0 1 1 0
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        String[]rr=s.split(" ");
+        int []arr=new int[rr.length];
+        for(int i=0;i<rr.length;i++){
+            arr[i]=Integer.parseInt(rr[i]);
+        }
+        List st=new ArrayList();
+        int count=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==1){
+                count++;
+            }if(arr[i]==0)count=0;
+            st.add(arr[i]);
+            if(count==2){
+                st.add(0);
+                count=0;
+            }
+
+
+        }
+        System.out.println(st);
+    }
+}
