@@ -1,0 +1,26 @@
+import java.util.Arrays;
+import java.util.*;
+class Main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        String[]st=s.split(" ");
+        List lt=new ArrayList();
+        int []stt=new int[st.length];
+        for(int i=0;i<st.length;i++) {
+            stt[i] = Integer.parseInt(st[i]);
+            lt.add(stt[i]);
+        }
+
+        int zero=0,first=1,last,count=100;
+
+        if(lt.contains(zero)) System.out.println(zero);
+
+        while(count-->0){
+            last=zero+first;
+            if(lt.contains(last)) System.out.println(" "+last);
+            zero=first;
+            first=last;
+        }
+    }
+}
