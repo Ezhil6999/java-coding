@@ -1,0 +1,83 @@
+package raj;
+
+import java.util.Scanner;
+
+public class Main1 {
+//    0
+//   101
+//  21012
+// 3210123
+//432101234
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int a=sc.nextInt();
+		int len=a+a-1;
+		for(int i=0;i<a;i++){
+			for(int j=i;j<a-1;j++){
+				System.out.print(" ");
+			}
+			int m=i;
+			for(int k=0;k<i;k++){
+				System.out.print(m--);
+			}
+			System.out.print("0");
+			int n=1;
+			for(int k=0;k<i;k++){
+				System.out.print(n++);
+			}
+			System.out.println();
+		}
+	}
+
+}
+11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+package raj;
+
+import java.util.Scanner;
+//*   *
+//** **
+//*****
+//*****
+//** **
+//*   *
+public class Main1 {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int a=sc.nextInt();
+		for(int i=0;i<a;i++){
+			for(int j=a;j>=a-i;j--){
+				System.out.print("*");
+			}
+			for(int j=0;j<a-1-i;j++){
+				System.out.print(" ");
+			}
+			for(int j=0;j<a-1-i;j++){
+				System.out.print(" ");
+			}
+			for(int j=a;j>=a-i;j--){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		
+		
+		for(int i=0;i<a;i++){
+			for(int j=a-i;j>0;j--){
+				System.out.print("*");
+			}
+			for(int j=a;j>a-i;j--){
+				System.out.print(" ");
+			}
+			for(int j=a;j>a-i;j--){
+				System.out.print(" ");
+			}for(int j=a-i;j>0;j--){
+				System.out.print("*");
+			}
+			System.out.println();
+	}
+
+}
+}
+
+222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
