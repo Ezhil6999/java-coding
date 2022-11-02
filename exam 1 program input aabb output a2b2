@@ -22,3 +22,34 @@ public class Main {
         }
     }
 
+2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+package raj;
+
+import java.util.Scanner;
+
+public class Main1 {
+	//aaabbbcc
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s="aaabbbcc";
+		String st="";
+		char ch[]=new char[s.length()+2];
+		for(int i=0;i<s.length();i++){
+			ch[i]=s.charAt(i);
+		}
+		int count=1;
+		char c=ch[0];
+		for(int i=0;i<ch.length;i++){
+			if(ch[i]!=0&& ch[i]==ch[i+1]){
+				count++;
+			}else if(ch[i]!=0){
+				st=st+ch[i]+count;
+				count=1;
+				c=ch[i+1];
+			}
+		
+		}
+		System.out.println(st);
+	}
+
+}
