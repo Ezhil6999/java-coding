@@ -1,0 +1,18 @@
+import java.util.*;
+class Main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+         String s="hello guys welcome to daily tune to tune your life";
+         String[]st=s.split(" ");
+         Map<String,Integer>map=new HashMap<String,Integer>();
+         for(String k:st){
+             if(map.containsKey(k)){
+                 int value=map.get(k);
+                 map.put(k,value+1);
+             }else{
+                 map.put(k,1);
+             }
+         }
+        System.out.println(map);
+    }
+}
