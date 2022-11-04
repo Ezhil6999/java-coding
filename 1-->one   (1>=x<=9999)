@@ -1,0 +1,56 @@
+package raj;
+import java.util.*;
+class Main1{
+	public static void main(String[]args){
+	    Scanner sc=new Scanner(System.in);
+	    int value=sc.nextInt();
+	    String s=""+value;
+	    int va;
+	    int len=s.length();
+		String[]single={"Zero","one","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"};
+		String[]zerovalue={"Zero","ten","twenty","thirty","fouty","fiftey","Sixty","seventy","eighty","ninety"};
+		String[]doubleteen={"zero","Eleven","Twelve","thirteen","Fourteen","Fifteen","sixteen","Seventeen","Eighteen","Nineteen","Twenty"};
+		String trible="Hundred",Fournam="Thousand";
+		if(len==4){
+			if(value%10==0&&value%100==0&&value%1000==0){
+				System.out.println(single[value/1000]+" " +Fournam);
+			}else {
+				System.out.print(single[value/1000]+" "+Fournam+" ");
+			}
+			len--;
+			//1234
+			
+			 va=value/10;
+			int v=va/10;
+			s=""+v%10+va%10+value%10;
+	        value=Integer.parseInt(s);
+			
+		}
+		 if(len==3){
+			if(value%10==0&&value%100==0){
+				System.out.println(single[value/100]+" " +trible);
+			}
+			else {
+				System.out.print(single[value/100]+" "+trible+" "+"and"+" ");
+			}
+			len--;
+			va=value/10;
+			va=va%10;
+		    s=""+va+value%10;
+            value=Integer.parseInt(s);
+		}
+		 if(len==2){
+			if(value%10==0){
+				System.out.println(zerovalue[value/10]);
+			}else if(value/10==1){
+				System.out.println(doubleteen[value%10]);
+			}
+			else if(value/10>1){
+				System.out.println(doubleteen[value/10]+" "+single[value%10]);
+			}
+		}
+		 if(len==1){
+	    	System.out.println(single[value]);
+	    }
+	    	
+	}	}
