@@ -1,0 +1,21 @@
+package raj;
+import java.util.regex.Pattern;
+//Complete representation of regular expression
+import java.util.regex.Matcher;
+//Interprets the pattern
+//We can use regular expression in ChatBot Application
+//Formvc
+//Compiler,Interprinter,Assembler
+//TCP IP Protocol
+//Digital Circuit
+class Main1{
+	public static void main(String[]args){
+	    String sentence="thupparku thuppaya thuppakki thupparku thuppaya thoovum mazhai";
+	    Pattern p=Pattern.compile("thuppa");
+	   Matcher m=p.matcher(sentence);
+	   while(m.find()){
+		   System.out.println(m.group()+" Starting place "+m.start()+" Ends at "+m.end());
+	   }
+	   
+	}
+}
