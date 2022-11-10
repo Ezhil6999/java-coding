@@ -19,3 +19,141 @@ class Main1{
 	   
 	}
 }
+ package raj;
+import java.util.regex.Pattern;
+//Complete representation of regular expression
+import java.util.regex.Matcher;
+//Interprets the pattern
+//We can use regular expression in ChatBot Application
+//Formvc
+//Compiler,Interprinter,Assembler
+//TCP IP Protocol
+//Digital Circuit
+class Main1{
+	public static void main(String[]args){
+	    String sentence="thupparku thuppaya thuppakki thupparku thuppaya thoovum mazhai";
+	    Pattern p=Pattern.compile("ai$");//$ check the string ends with it or not
+	    Pattern o=Pattern.compile("^thu");//check the string starts with it or not
+	   Matcher m=p.matcher(sentence);
+	   while(m.find()){
+		   System.out.println(m.group()+" Starting place "+m.start()+" Ends at "+m.end());
+	   }
+	   
+	}
+}
+ package raj;
+import java.util.regex.Pattern;
+//Complete representation of regular expression
+import java.util.regex.Matcher;
+//Interprets the pattern
+//We can use regular expression in ChatBot Application
+//Formvc
+//Compiler,Interprinter,Assembler
+//TCP IP Protocol
+//Digital Circuit
+class Main1{
+	public static void main(String[]args){
+	    String sentence="thupparku thuppaya thuppakki thupparku thuppaya thoovum mazhai";
+	    Pattern p=Pattern.compile("ai$");//$ check the string ends with it or not
+	    Pattern o=Pattern.compile("^thu");//check the string starts with it or not
+	    Pattern i=Pattern.compile("t|u");// check the value is present | symbol denote "or" like ||
+	   Matcher m=p.matcher(sentence);
+	   while(m.find()){
+		   System.out.println(m.group()+" Starting place "+m.start()+" Ends at "+m.end());
+	   }
+	   
+	}
+}
+ package raj;
+import java.util.regex.Pattern;
+//Complete representation of regular expression
+import java.util.regex.Matcher;
+//Interprets the pattern
+//We can use regular expression in ChatBot Application
+//Formvc
+//Compiler,Interprinter,Assembler
+//TCP IP Protocol
+//Digital Circuit
+class Main1{
+	public static void main(String[]args){
+	   String sentence="abcbcabaabccbaabc";
+	   Pattern p=Pattern.compile("[abc]");//a or b or c    []  denotes
+	   Matcher m=p.matcher(sentence);
+	   while(m.find()){
+		   System.out.println(m.group());
+	   }
+	}
+}
+ Ezhil: package raj;
+import java.util.regex.Pattern;
+//Complete representation of regular expression
+import java.util.regex.Matcher;
+//Interprets the pattern
+//We can use regular expression in ChatBot Application
+//Formvc
+//Compiler,Interprinter,Assembler
+//TCP IP Protocol
+//Digital Circuit
+class Main1{
+	public static void main(String[]args){
+	   String sentence="abcbcabaabccbaabc";
+	   Pattern p=Pattern.compile("[^ab]");//a or b -->other then ab    [^ ]  denotes
+	   Matcher m=p.matcher(sentence);
+	   while(m.find()){
+		   System.out.println(m.group()+" "+m.start());
+	   }
+	}
+}
+ package raj;
+import java.util.regex.Pattern;
+//Complete representation of regular expression
+import java.util.regex.Matcher;
+//Interprets the pattern
+//We can use regular expression in ChatBot Application
+//Formvc
+//Compiler,Interprinter,Assembler
+//TCP IP Protocol
+//Digital Circuit
+class Main1{
+	public static void main(String[]args){
+	   String sentence="abcbcabaabccbaabc";
+	   Pattern p=Pattern.compile("[^ab]");//a or b -->other then ab    [^ ]  denotes
+	   Pattern o=Pattern.compile("[a-z]");// String is small letter alphabets
+	   Pattern n=Pattern.compile("[a-zA-Z]");
+	   Pattern l=Pattern.compile("[0-9]");
+	   Pattern n=Pattern.compile("[a-zA-Z0-9]");//print all the alphabets and number
+	   Pattern n1=Pattern.compile("[^a-zA-Z0-9]");//not print the all the alphabets and number
+
+	   Matcher m=p.matcher(sentence);
+	   while(m.find()){
+		   System.out.println(m.group()+" "+m.start());
+	   }
+	}
+}
+ package raj;
+import java.util.regex.Pattern;
+//Complete representation of regular expression
+import java.util.regex.Matcher;
+
+class Main1{
+	//Predefine character
+	public static void main(String[]args){
+	   String sentence="Tamil TamilTamil Tamilan Tamilnadu0";
+	   Pattern j=Pattern.compile("\\s");//Finding space in the string
+	   Pattern k=Pattern.compile("\\S");//finding not  space character in the string
+	   Pattern h=Pattern.compile("\\d");//Finding the numerical value present in the string
+	   Pattern y=Pattern.compile("\\D");//Finding the non numerical value present in the string
+	   Pattern b=Pattern.compile("\\w");//Finding the non Alphabetical and numeric value present in the string Pattern h=Pattern.compile("\\d");//Finding the numerical value present in the string
+	   Pattern lgp=Pattern.compile("\\W");//Finding the non Alphabetical and numeric value present in the string  only print special character
+	   Pattern lp=Pattern.compile("\\bTamil");//b-->boundary which means spACE IS A BOUNDARY
+	   Pattern lg=Pattern.compile("\\bTamil\\b");//Starts and end with tamil
+	   Pattern l=Pattern.compile("Tamil\\B");//b-->boundary which means spACE IS A BOUNDARY which print the starting point
+	   Pattern lvp=Pattern.compile("\\bTamil\\b");//Starts and end with tamil
+	   Pattern lvk=Pattern.compile("\\GTamil");//contineous repeating string cpount from the starting
+	   Pattern lv=Pattern.compile(".");//All the character including special character
+	   Matcher m=lv.matcher(sentence);
+	   while(m.find()){
+		   System.out.println(m.group()+" "+m.start());
+	   }
+	}
+}
