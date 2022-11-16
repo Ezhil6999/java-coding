@@ -1,0 +1,48 @@
+import java.util.*;
+import java.lang.*;
+public class Main{
+	public static void main(String[] args) {
+//		w	e	L	C	O
+//		M	E	T	O	Z
+//		O	H	O	C	O
+//		R	P	O	R	A
+//		T	I	O	n
+		
+//		WELCOMETOZOHOCORPORATION
+		Scanner sc=new Scanner(System.in);
+		String s="WELCOMETOZOHOCORPORATION";
+		char[]ch=s.toCharArray();
+		char[][]arr=new char[5][5];
+		int k=0;
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<5;j++) {
+				if(k==s.length()-1) {
+					arr[i][j]=ch[k++];break;
+				}
+				arr[i][j]=ch[k++];
+			}
+		}
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<5;j++) {
+				if(arr[i][j]=='T'&&j!=5) {
+					if(arr[i][j+1]=='O'&&j+1!=5) {
+						if(arr[i][j+2]=='O') {
+							System.out.println("<i :"+i+" j :"+j+">");
+							System.out.println("<i :"+i+" j :"+(j+2)+">");
+						}
+					}
+				}
+			}
+			for(int j=0;j<5;j++) {
+				if(arr[i][j]=='T'&&i+1!=5) {
+					if(arr[i+1][j]=='O'&&i+2!=5) {
+						if(arr[i+2][j]=='O') {
+							System.out.println("<i :"+i+" j :"+j+">");
+							System.out.println("<i :"+(i+2)+" j :"+j+">");
+						}
+					}
+				}
+			}
+		}
+	}
+}
