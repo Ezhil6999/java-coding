@@ -1,0 +1,28 @@
+import java.util.*;
+import java.lang.*;
+public class Main{
+//	<”luke”, “shaw”>
+//	  <”wayne”, “rooney”>
+//	  <”rooney”, “ronaldo”>
+//	  <”shaw”, “rooney”> 
+	public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      String[][]matrix= {{"luke","shaw"},{"wayne", "rooney"},{"rooney", "ronaldo"},{"shaw", "rooney"}};
+String s="";
+     for(int i=0;i<4;i++) {
+    	if(matrix[i][1]=="ronaldo") {
+    		s=matrix[i][0];
+    	}
+    	  }
+     String m="";
+     for(int i=0;i<4;i++) {
+     	if(matrix[i][1]==s) {
+     		m=m+matrix[i][0]+" ";
+     	}
+     }
+     String[]str=m.split(" ");
+     for(int i=0;i<str.length;i++) {
+    	 System.out.println(str[i]);
+     }
+	}
+}
