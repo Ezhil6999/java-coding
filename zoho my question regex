@@ -1,15 +1,13 @@
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.lang.*;
-public class Main{
-	public static void main(String[] args) {
-	Scanner sc=new Scanner(System.in);
-	String s=sc.nextLine();
-	String ss=sc.nextLine();
-    Pattern p=Pattern.compile(ss);
-    boolean m=p.matches(s,ss);
-   
-   System.out.println(m); 
-	 } 
+        import java.util.regex.Matcher;
+        import java.util.regex.Pattern;
+        import java.lang.*;
+public class Main1{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        String ss=sc.nextLine();
+        boolean m=Pattern.matches(ss,s);
+        System.out.println(m);
+    }
 }
