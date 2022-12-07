@@ -1,0 +1,37 @@
+import java.util.*;
+import java.util.stream.*;
+import java.lang.*;
+public class Main1 {
+//    P         M
+//     R      A
+//      O   R
+//        G
+//      O    R
+//     R       A
+//    P          M
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s="PROGRAM";
+        char[] arr=s.toCharArray();
+        int l=0,m=0;
+        for(int i=0;i<s.length();i++){
+            for(int j=0;j<s.length();j++){
+                if(i==j && i==s.length()/2&& j==s.length()/2) {
+                    l++;
+                }
+                else if(i==j){
+                    System.out.print(arr[l]);
+                    l++;
+                }
+                if(i+j==arr.length-1){
+                    System.out.print(arr[m]);
+                    m++;
+                }
+                    else System.out.print(" ");
+            }
+            System.out.println();
+        }
+
+    }
+
+}
