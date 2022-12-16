@@ -1,0 +1,21 @@
+import java.util.*;
+public class Bank {
+   public static void main(String[] args) {
+       //1 2 5 10 20       54
+       int[]arr={1,2,5,10,20};
+       int a=54;
+       int len=arr.length-1,rem=0,count=0;
+       while(true){
+           if(arr[len]<a){
+               count=a/arr[len];
+               rem=a%arr[len];
+               a=rem;
+               System.out.println("Coin "+arr[len] +" "+count);
+
+           }
+           len--;
+           if(len<0)break;
+       }
+       }
+   }
+
