@@ -41,3 +41,58 @@ public class Hello {
        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+public class Bank {
+//   Input  : ((abc)((de))
+//   Output : ((abc)(de))
+   public static void main(String[] args) {
+       Scanner sc=new Scanner(System.in);
+       String s=sc.nextLine();
+       char[]arr=s.toCharArray();
+       char[]ch=new char[arr.length];
+       int count=0;
+       int count1=0;
+       for(int i=0;i<ch.length;i++){
+          if (!(arr[i] == '(' || arr[i] == ')')) {
+             ch[i]=arr[i];
+          }
+          if(arr[i]=='('){
+             count++;
+          }
+          else if(arr[i]==')'){
+             count1++;
+          }
+       }
+       if(count==count1){
+          System.out.println("Balance String");
+       }else if(count>count1){
+             int c=count-count1;
+             int count2=0;
+           for(int i=0;i<ch.length;i++){
+               if(arr[i]=='('){
+                   count2++;
+                   if(count1<count2){}
+                   else ch[i]=arr[i];
+               }else if(arr[i]==')'){
+                   ch[i]=arr[i];
+               }
+           }
+       }
+       for(int i=0;i<ch.length;i++){
+           if(!(ch[i]==0))System.out.print(ch[i]);
+       }
+   }
+}
