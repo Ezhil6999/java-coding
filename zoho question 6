@@ -1,0 +1,34 @@
+import java.util.*;
+public class Bank {
+   public static void main(String[] args) {
+//     input : abbccc
+//     output: ab2c3
+       Scanner sc=new Scanner(System.in);
+       String s=sc.nextLine();
+       char[]ch=s.toCharArray();
+       int count=1;
+       char c=ch[0];
+       for(int i=1;i<ch.length;i++){
+           if(ch[i]==c){
+               count++;
+           }else{
+               if(count==1){
+                   System.out.print(c);
+               }else{
+                   System.out.print(c );
+                   System.out.print( count);
+               }
+               c=ch[i];
+               count=1;
+           }
+
+       }
+       if(count==1){
+           System.out.print(c);
+       }else{
+           System.out.print(c );
+           System.out.print( count);
+       }
+       }
+   }
+
