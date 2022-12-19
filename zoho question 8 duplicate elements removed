@@ -1,0 +1,24 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.regex.*;
+class Bank{
+    public static void main(String[] args) {
+int []arr1={1,5,3,4,2,3,4,55,33,21,5464,};
+int[]arr2={4,2,35,55,1,24,64,67,34};
+int len;
+if(arr1.length>arr2.length)len=arr1.length;
+else len=arr2.length;
+        HashSet<Integer> hs=new HashSet<>();
+for(int i=0;i<len;i++){
+    if(arr1.length-1<=i){
+       break;
+    }
+    else  hs.add(arr1[i]);
+    if(arr2.length-1==i){
+        break;
+    }
+    else  hs.add(arr2[i]);
+}
+        System.out.println(hs);
+    }
+}
