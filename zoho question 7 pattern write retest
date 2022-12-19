@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.util.regex.*;
+class Bank{
+    public static void main(String[] args) {
+//        1
+//       3 2
+//      6 5 4
+//     10 9 8 7
+//     10 9 8 7
+//      6 5 4
+//       3 2
+//        1
+        int q=1;
+        int w=1;
+        int value=8;
+        for(int i=0;i<(value/2);i++){
+            for(int j=i;j<3;j++){
+                System.out.print(" ");
+            }
+            for(int j=(value/2)-i-1;j<(value/2);j++){
+                System.out.print(w-- +" ");
+                q++;
+            }
+            q=q+1;
+            if(i==(value/2)-1){
+            }else w=q;
+
+            System.out.println();
+        }
+        w=10;
+        for(int i=0;i<(value/2);i++){
+            for(int j=3-i;j<3;j++){
+                System.out.print(" ");
+            }
+            for(int j=i;j<(value/2);j++){
+                System.out.print(w-- +" ");
+
+            }
+
+            System.out.println();
+        }
+    }
+}
