@@ -1,0 +1,27 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.regex.*;
+class Bank{
+    public static void main(String[] args) {
+//        Given two Strings s1 and s2, remove all the characters from s1 which is present in s2.
+//        Input: s1=”expErIence”, s2=”En”
+//        output: s1=”exprIece”
+        Scanner sc=new Scanner(System.in);
+        String s1=sc.nextLine();
+        String s2=sc.nextLine();
+        char[] a1=s1.toCharArray();
+        char[] a2=s2.toCharArray();
+        String s="";
+        int o=0;
+        for(int i=0;i<a1.length;i++){
+            for (int j=0;j<a2.length;j++){
+                if(a1[i]==a2[j]){
+                    o=1;
+                }
+            }
+            if(o==0)s=s+a1[i];
+            o=0;
+        }
+        System.out.println(s);
+    }
+}
