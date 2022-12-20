@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+class Bank{
+//if the input number is “2 3 5 4 5”, the output should be “2 3 6 3 2”. And if the input number is “9 9 9”, the output should be “1 0 0 1”.
+    public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    int s=sc.nextInt();
+s++;
+    while (true){
+        String p=String.valueOf(s);
+        char[]a1=p.toCharArray();
+        int l=a1.length-1;
+        int count=0;
+        for(int i=0;i<a1.length;i++){
+            if(a1[i]==a1[l--]){
+                count++;
+            }else break;
+        }
+        if(count==a1.length){
+            System.out.println(s);
+            break;
+        }else s++;
+    }
+    }
+}
