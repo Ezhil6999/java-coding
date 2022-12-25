@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Bank {
+//    Given a sentence of string, in that remove the palindrome words and print the
+//    remaining.
+//            Input:
+//    He did a good deed
+//    Output:
+//    He good
+//    Input:
+//    Hari speaks malayalam
+//    Output:
+//    Hari speaks
+    public static void main(String[] args) {
+         Scanner sc=new Scanner(System.in);
+         String s=sc.nextLine();
+         String ss="";
+        int count=0;
+         String[] arr=s.split(" ");
+         for(int i=0;i<arr.length;i++){
+             char[]ch=arr[i].toCharArray();
+             int k=ch.length-1;
+             for(int m=0;m<ch.length;m++){
+             if(ch[m]==ch[k--])count++;
+             }
+             if(count!=ch.length){
+                 ss=ss+" "+arr[i];
+             }
+             count=0;
+         }
+        System.out.println(ss.trim());
+    }
+}
