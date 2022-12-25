@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Bank {
+    //    Given an array with repeated numbers, Find the top three repeated numbers.
+//            input: array[]={3, 4, 2, 3, 16, 3, 15, 16, 15, 15, 16, 2, 3}
+//    output: 3, 16, 15
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int array[] = {3, 4, 2, 3, 16, 3, 15, 16, 15, 15, 16, 2, 3};
+        int a=0;
+        int a1=0;
+        int b=0;
+        int b1=0;
+        int c=0;
+        int c1=0;
+        for(int i=0;i<array.length;i++){
+            int count=0;
+            for(int j=0;j< array.length;j++){
+                if(array[i]==array[j])count++;
+            }
+            if(array[i]==a1||array[i]==b1||array[i]==c1){}
+            else{
+            if(count>a){
+                a=count;
+                a1=array[i];
+            } else if (count>b) {
+                b=count;
+                b1=array[i];
+            }else if (count>c) {
+                c=count;
+                c1=array[i];
+            }}
+        }
+        System.out.println(a1 +" : "+a+"\n"+b1 +" : "+b+"\n"+c1 +" : "+c );
+
+    }
+}
