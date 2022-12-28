@@ -1,0 +1,94 @@
+import java.util.*;
+
+class Booking{
+    public static List create(int num){
+        List<Taxi> list=new ArrayList<Taxi>();
+        while(num-->0){
+            list.add(new Taxi());
+        }
+        return list;
+    }//create
+
+    public static List freetaxi(char pp,List<Taxi> list,int time){
+        List<Taxi> taxi=new ArrayList<Taxi>();
+        for(Taxi t:list){
+            if(t.time<=time && Math.abs((pp-'0')-(t.currentP-'0'))<=time-t.time)taxi.add(t);
+        }
+        return taxi;
+    }
+    public static void main(String []args){
+
+        Scanner sc=new Scanner(System.in);
+        int numOfTaxi=6;
+        List<Taxi> list=create(numOfTaxi);
+
+        int id=1;
+        boolean b=true;
+        while(b){
+            System.out.println("Press -->1 for Booking\nPress -->2 For Printing");
+            int cho=sc.nextInt();
+            switch(cho){
+                case 1:
+                    System.out.println("Enter pickup Point  : ");
+                    char pp=sc.next().charAt(0);
+                    System.out.println("Enter Drop Point  : ");
+                    char dp=sc.next().charAt(0);
+                    System.out.println("Enter Pickup Time  : ");
+                    int time=sc.nextInt();
+                    if(!(pp>='A'&& pp<='F'&& dp>='A'&& dp<='F')){
+                        System.out.println("Enter correct Point =====>A B C D E F <======");
+                        return;
+
+                    }
+                    List<Taxi>freeTaxi=freetaxi(pp,list,time);
+                    if(freeTaxi.size()==0){
+                        System.out.println("==================NO TAXI AVAILABLE=================");
+                        return;
+                    }
+                    Collections.sort(freeTaxi,(x,y)->x.total-y.total);
+                    Addtaxi(id,freeTaxi,dp,pp,time);
+                    id++;
+                    break;
+                case 2:
+                    for(Taxi t:list){
+                        t.print();
+                    }
+                    break;
+                default: return;
+            }
+
+        }//While loop
+
+
+    }
+
+    private static void Addtaxi(int id, List<Taxi> freeTaxi, char dp, char pp, int time) {
+       int min=999;
+       int distancebettween;
+        int freetime =0;
+        char currentP='L';
+        int earn=0;
+        int distancebettweenppanddp;
+        String s = null;
+        Taxi u=null;
+       for(Taxi t:freeTaxi){
+           distancebettween=Math.abs((pp-'0')-(t.currentP-'0'))*15;
+           if(distancebettween<min){
+               distancebettweenppanddp=Math.abs((pp-'0')-(dp-'0'))*15;
+
+               earn=(((distancebettweenppanddp)-5)*10+100);
+               freetime=time+distancebettweenppanddp/15;
+               currentP=dp;
+               s="  " +id+"           "+t.taxiId+"            "+pp+"           "+dp+"            "+time+"           "+freetime+"         "+earn;
+               earn=t.total+earn;
+               u=t;
+           }
+       }
+
+       int i=u.adddetails(s,earn,currentP,freetime);
+        System.out.println("Taxi "+i+" is Booked Successful");
+    }
+
+
+
+}
