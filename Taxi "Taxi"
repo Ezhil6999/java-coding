@@ -1,0 +1,35 @@
+import java.util.*;
+
+class Taxi{
+     static int id=1;
+     List<String> list;
+     int time;
+     char currentP;
+    int total;
+    int taxiId;
+    Taxi(){
+        time=6;
+        currentP='A';
+        total=0;
+        taxiId=id;
+        id=id+1;
+        list=new ArrayList<String>();
+    }
+
+    public int adddetails(String s, int earn, char currentP, int freetime) {
+        this.list.add(s);
+        this.time=freetime;
+        this.total=earn;
+        this.currentP=currentP;
+        return taxiId;
+    }
+
+    public void print() {
+        System.out.println("Taxi "+this.taxiId+" Total Earnings : "+ this.total);
+        System.out.println(" Customerid   taxiId   pickupPoint  droppoint  Pickuptime    freetime     earn");
+        for (String l:list){
+            System.out.println(l);
+        }
+        System.out.println("========================================================================================");
+    }
+}
