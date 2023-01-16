@@ -41,3 +41,45 @@ class Bank{
         }
     }
 }
+
+
+
+
+
+import java.util.*;
+
+class Main1{
+    public static void main(String[]args){
+  //      1
+//       3 2
+//      6 5 4
+//     10 9 8 7
+//     10 9 8 7
+//      6 5 4
+//       3 2
+//        1
+        int a=4;
+        int m=1;
+        for(int i=0;i<a;i++){
+            for(int j=1+i;j<a;j++){
+                System.out.print(" ");
+            }
+            int n=m;
+            for(int j=i+1;j>0;j--){
+                System.out.print(" "+n--);
+            }if(i!=a-1)
+            m=m+i+2;
+            System.out.println();
+        }
+        for(int i=0;i<a;i++){
+            for(int j=a-i;j<a;j++){
+                System.out.print(" ");
+            }
+            for(int j=a-i;j>0;j--){
+                System.out.print(" "+m--);
+            }
+
+            System.out.println();
+        }
+    }
+}
