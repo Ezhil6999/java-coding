@@ -1,0 +1,130 @@
+import java.util.*;
+import java.lang.*;
+public class TaxiMain {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        List<TaxiDetails> taxi=create(6);
+        int passengerid=1;
+        boolean t=true;
+        while(t){
+            System.out.println("1-->book Taxi \n2-->Taxi Details \n3-->Exit");
+            int choice=sc.nextInt();
+            switch (choice){
+                case 1:
+                {
+                    System.out.println("\n..................................Loading ^_^ \n");
+                    System.out.println("Enter Pickup Point : ");
+                    char ppoint=sc.next().charAt(0);
+                    System.out.println("Enter Drop Point : ");
+                    char dpoint=sc.next().charAt(0);
+                    System.out.println("Enter Pickup Time : ");
+                    int time=sc.nextInt();
+                    if(ppoint<='A'&& ppoint>='F')
+                    {
+                        System.out.println("\nEnter Correct Value .......PROCESS TERMINATED .......+^_^+\n");
+                        return;
+                    } if(dpoint<='A'&& dpoint>='F' )
+                {
+                    System.out.println("\nEnter Correct Value .......PROCESS TERMINATEDK .......+^_^+\n");
+                    return;
+                }
+                    List<TaxiDetails> freetaxi=check(ppoint,dpoint,time,taxi);
+                    if(freetaxi.size()==0){
+                        System.out.println("\nThere is no Free Taxi Available at " + time+" .......PROCESS TERMINATED .......+^_^+\n");
+                    }
+                    Collections.sort(freetaxi,(x,y)->x.freetime-y.freetime);
+                    Bookingtaxi(freetaxi,ppoint,dpoint,time,passengerid);
+                    passengerid++;
+                    break;
+                }
+                case 2:
+                    for(TaxiDetails k : taxi){
+                        System.out.println("=============== "+k.taxiid+" taxi id ======================");
+                        System.out.println("Total amount earn : "+k.totalearn );
+                        System.out.println("TAXI ID    CUSTOMER ID  PICKUP   DROP   PICKUPTIME   DROPTIME   EARN");
+                        for (String l:k.st){
+                            System.out.println(l);
+                        }
+                    }
+                    break;
+                case 3:
+
+                    break;
+            }
+        }
+    }
+
+    private static void Bookingtaxi(List<TaxiDetails> freetaxi, char ppoint, char dpoint, int time, int passengerid) {
+        int d=1000;
+        int earn=0;
+        int DBetC_d;
+        int droptime=0;
+        int DBetP_D;
+        String st=" ";
+        TaxiDetails f=null;
+        for(TaxiDetails t:freetaxi){
+            DBetC_d=Math.abs((t.currentpossition-'0')-(ppoint-'0'))*15;
+            if(d>DBetC_d){
+                d=DBetC_d;
+                droptime=time+Math.abs((dpoint-'0')-(ppoint-'0'));
+                DBetP_D=Math.abs((dpoint-'0')-(ppoint-'0'))*15;
+                earn=(((DBetP_D)-5)*10)+100;
+                st=t.taxiid+"          "+passengerid+"          "+ppoint+"          "+dpoint+"          "+time+"          "+droptime+"          "+earn;
+                f=t;
+            }
+        }
+        f.storage(droptime,dpoint,earn,st);
+        System.out.println("\n============================="+f.taxiid+ "  TAXI BOOKED SUCCESSFULLY===========================");
+
+    }
+
+
+    private static List<TaxiDetails> check(char ppoint, char dpoint, int time,List<TaxiDetails> taxi) {
+        List<TaxiDetails> freeTaxi=new ArrayList<TaxiDetails>();
+        for(TaxiDetails t : taxi){
+            if(t.freetime<=time && (Math.abs((ppoint='0')-(t.currentpossition-'0')))>=time-t.freetime)
+            {
+                freeTaxi.add(t);
+            }
+        }
+        return freeTaxi;
+    }
+
+    private static List<TaxiDetails> create(int i) {
+        List<TaxiDetails> taxi=new ArrayList<TaxiDetails>();
+        while(i-->0){
+            taxi.add(new TaxiDetails());
+        }
+        return taxi;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.util.*;
+public class TaxiDetails {
+     static int id=1;
+     int taxiid;
+     int totalearn;
+     char currentpossition;
+     int freetime;
+
+      List<String> st;
+     TaxiDetails()
+    {
+        taxiid=id++;
+        totalearn=0;
+        currentpossition='A';
+        freetime=6;
+        st= new ArrayList<>();
+    }
+
+    public void storage(int droptime, char dpoint, int earn, String str) {
+         this.currentpossition=dpoint;
+         this.freetime=droptime;
+         this.totalearn=this.totalearn+earn;
+         st.add(str);
+    }
+
+
+
+}
