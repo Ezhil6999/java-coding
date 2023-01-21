@@ -1,0 +1,134 @@
+import java.util.*;
+
+class Main1{
+    public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        final int numberofFLIGHT=2;
+        List<Flight> flight=create(numberofFLIGHT);
+        boolean t=true;
+        while(t){
+            System.out.println("1--> Booking\n2--> Cancelling booked tickets\n3--> view Booked tickets\n4--> Exit\n");
+
+            int choice=sc.nextInt();
+            switch (choice){
+                case 1:
+                {
+                    System.out.println("Enter Passenger name  : ");
+                    sc.nextLine();
+                    String name=sc.nextLine();
+                    System.out.println("Enter Flight name(flight 1 or flight 2 : ");
+                    String fname=sc.nextLine();
+                    System.out.println("Enter number of tickets needed : ");
+                    int ntickets=sc.nextInt();
+                    Flight k=null;
+                    for(Flight f:flight){
+                        System.out.println(f.flightname);
+                    }
+                    for(Flight f:flight){
+                        if(f.flightname.equals(fname)){
+                            f.flightname=fname;
+                            k=f;
+                        }
+                    }
+                    if(k.numSeat<ntickets){
+                        System.out.println("the ticket is less book less number of tickets or try other flight ..^_^");
+                        break;
+                    }
+                    Passenger p=new Passenger(name,ntickets);
+                    booking(p,k);
+                break;
+                }
+                case 2:
+                    System.out.println("Enter your name : ");
+                    sc.nextLine();
+                    String name=sc.nextLine();
+                    System.out.println("Enter your id : ");
+                    int id=sc.nextInt();
+                    cancelling(flight,name,id);
+                    break;
+                case 3:
+                {
+                    for(Flight f:flight){
+                       for(Passenger p:f.passStorage){
+                           System.out.println(p.passengerid   +"        "+p.name+"        "+p.totalamount+"        "+p.numticketsbooked+"        "+f.flightname);
+                       }
+                    }
+                    break;
+                }
+                default:
+                    return;
+            }
+        }
+    }
+
+    private static void cancelling(List<Flight> flight,String cname,int cid) {
+        int count=0;
+        for(Flight k:flight){
+            for(Passenger p:k.passStorage){
+                if(p.name.equals(cname)&&p.passengerid==cid){
+
+                    k.numSeat=k.numSeat+p.numticketsbooked;
+                    k.price=k.price-(p.numticketsbooked*200);
+                    k.passStorage.remove(p);
+                    System.out.println("\nSuccessfully cancelled=============== ");
+                    count=1;
+                    break;
+                }
+            }
+        }
+        if(count==0){
+            System.out.println("\n===========Please enter valid answer");
+        }
+    }
+
+    private static void booking(Passenger p, Flight k) {
+        p.totalamount=k.price*p.numticketsbooked;
+        k.numSeat=k.numSeat-p.numticketsbooked;
+        k.price=(p.numticketsbooked*200)+k.price;
+        System.out.println("pay      :  "+p.totalamount);
+        System.out.println("\n....................."+p.numticketsbooked+" seat booked");
+        k.passStorage.add(p);
+    }
+
+    private static List<Flight> create(int numberofFLIGHT) {
+        List<Flight> flight=new ArrayList<Flight>();
+        while(numberofFLIGHT-->0){
+            flight.add(new Flight());
+        }
+        return flight;
+    }
+}
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Flight{
+    static int id=1;
+    String flightname;
+    int numSeat;
+    int price;
+    List <Passenger> passStorage;
+    Flight(){
+        flightname="flight "+id;
+        id++;
+        numSeat=50;
+        price=5000;
+        passStorage=new ArrayList<Passenger>();
+    }
+}
+
+class Passenger{
+    static int id=1;
+    int passengerid;
+ int numticketsbooked;
+ int totalamount;
+ String name;
+ String flightname;
+    public Passenger(String name,int numticketsbooked) {
+             passengerid=id++;
+             this.name=name;
+             this.numticketsbooked=numticketsbooked;
+             totalamount=0;
+    }
+}
