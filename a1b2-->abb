@@ -1,0 +1,27 @@
+import java.util.*;
+class Main1{
+//    Input: a1b10
+//    Output: abbbbbbbbbb
+//    Eg: 2: Input: b3c6d15
+//    Output: bbbccccccddddddddddddddd
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        char[]ch=s.toCharArray();
+        int c=0;
+        char cc=' ';
+        String ss="";
+        for(int i=0;i<ch.length;i++){
+            if(ch[i]>='a'&& ch[i]<='z'){
+                cc=ch[i];
+            }
+            if(ch[i]>='0'&& ch[i]<='9'){
+                c=Integer.parseInt(String.valueOf(ch[i]));
+                while (c-->0){
+                    ss=ss+cc;
+                }
+            }
+        }
+        System.out.println(ss);
+    }
+}
