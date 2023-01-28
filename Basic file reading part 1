@@ -1,0 +1,96 @@
+import java.util.*;
+import java.io.*;
+class Main{
+    public static void main(String[] args) throws IOException {
+        Scanner sc=new Scanner(System.in);
+        File file1=new File("D:\\C or c++\\myfolder");
+        File file=new File("D:\\C or c++\\myfolder\\ezhil.txt");
+        boolean t=file1.exists();
+        if(t==false){
+            file1.mkdir(); //file.mkdir()-->if single folder need file.mkdirs()-->if many folder needed
+        }
+        boolean t1=file.exists();
+        if(t1==false)file.createNewFile();
+        System.out.println(file.delete());
+
+    }
+}
+
+
+
+
+
+//    File file=new File("D:\\C or c++\\myfolder");
+//        System.out.println(file.exists());
+
+//    File file=new File("D:\\C or c++\\myfolder");
+//    boolean t=file.exists();
+//        if(t==false)file.mkdir(); //file.mkdir()-->if single folder need file.mkdirs()-->if many folder needed
+
+//    File file1=new File("D:\\C or c++\\myfolder");
+//    File file=new File("D:\\C or c++\\myfolder\\ezhil.txt");
+//    boolean t=file1.exists();
+//        if(t==false){
+//                file1.mkdir(); //file.mkdir()-->if single folder need file.mkdirs()-->if many folder needed
+//                }
+//                boolean t1=file.exists();
+//                if(t1==false)file.createNewFile();
+
+//        System.out.println(file1.delete());
+
+
+//RENAME A FILE :
+              //f1=new file("\\raja\\test.txt");
+                  //f2=new file("\\raja\\Ezhil.txt");
+               //f1.renameTo(f2);
+
+
+//HOW TO GET A FILE NAME
+              //f1=new file("\\raja\\Ezhil.txt");
+              //System.out.println(f1.getName());-->Ezhil
+
+//printing all the files and folders in the directory
+              //file-new file("\\raja");
+              //String[]listoffile=file.list();-->print only the name
+              //for(String s:listoffile){
+              //System.out.println(s);
+               //}
+//printing all the files directory
+              //file-new file("\\raja");
+              //file[]listoffile=file.listFiles();-->return type is file -->print name with path
+              //for(String s:listoffile){
+              //if(s.isFile())
+              //System.out.println(s);
+               //}
+//printing all the folder
+              //file-new file("\\raja");
+              //file[]listoffile=file.listFiles();-->return type is file -->print name with path
+              //for(String s:listoffile){
+              //if(s.isDirectory())
+              //System.out.println(s);
+              //}
+//printing all the with html extension or other extension directory
+              //file-new file("\\raja");
+              //file[]listoffile=file.listFiles();-->return type is file -->print name with path
+              //for(String s:listoffile){
+              //if(s.isFile()){
+              //String filename=f.getName();
+              //int last=filename.lastIndexOf(".");
+              //String extension=fileName.subString(last+1);
+              //if(extension.equals("html"))
+              //System.out.println(s);
+              //}}
+
+//printing all the with html extension or other extension directory
+              //file-new file("\\raja");
+              //file[]listoffile=file.listFiles();-->return type is file -->print name with path
+              //for(String s:listoffile){
+              //if(s.isFile()){
+              //String filename=s.getName();
+              //int last=filename.lastIndexOf(".");
+              //String extension=fileName.subString(last+1);
+              //if(extension.equals("html"))
+               // if(f.length()>5000000)
+              //System.out.println(s +"  "+s.length());
+              //}}
+
