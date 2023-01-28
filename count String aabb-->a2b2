@@ -23,3 +23,33 @@ public class Main {
         System.out.println(s);
     }
 }
+
+
+
+
+import java.util.*;
+class Main1{
+    //    input: abbbbbbbbbb
+    //    output: a1b10
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine()+" ";
+        char ch[]=s.toCharArray();
+        String ss="";
+        char c=s.charAt(0);
+        int count=0;
+        for(int i=0;i<ch.length-1;i++){
+            if(ch[i]==c){
+                count++;
+            }
+            else {
+                ss=ss+""+c+count;
+                c=ch[i+1];
+                count=1;
+            }
+
+        }
+        ss=ss+""+c+count;
+        System.out.println(ss);
+    }
+}
