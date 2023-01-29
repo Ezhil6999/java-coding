@@ -1,0 +1,75 @@
+
+
+import java.util.ArrayList;
+        import java.util.List;
+        import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        List<Integer> id = new ArrayList<Integer>();
+        List<Float> cutoff = new ArrayList<Float>();
+        List<String> name = new ArrayList<String>();
+        int nameid=1;
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println(
+                    "Press 1-->Add New Admission\nPress 2-->Delete Admission\nPress 3-->Update Admission\nPress 4-->View Admission Details");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1: {
+                    System.out.println("Enter your Student Name");
+                    sc.nextLine();
+                    String namee = sc.nextLine();
+                    System.out.println("Enter Student cut-off");
+                    float cutoffstu = sc.nextFloat();
+                    cutoff.add(cutoffstu);
+                    name.add(namee);
+                    id.add(nameid);
+                    nameid++;
+                    System.out.println("Added Successfully");
+                    break;
+                }
+                case 2: {
+                    System.out.print("Enter Deleting Student id : ");
+                    int k = sc.nextInt();
+                    int index;
+                    index = id.indexOf(k);
+                    id.remove(index);
+                    name.remove(index);
+                    cutoff.remove(index);
+                    System.out.println("cancelled successful ..");
+                    break;
+                }
+                case 3:
+                    System.out.println("Enter your id : ");
+                    int idno=sc.nextInt();
+                    int ind=id.indexOf(idno);
+                    System.out.println("Enter updating name : ");
+                    sc.nextLine();
+                    String uname=sc.nextLine();
+                    System.out.println("Enter updating cutoff : ");
+                    float cut=sc.nextFloat();
+                    name.remove(ind);
+                    cutoff.remove(ind);
+                    id.remove(ind);
+
+                    name.add(ind,uname);
+                    cutoff.add(ind,cut);
+                    id.add(ind,idno);
+                    break;
+                    case 4:
+                    for(int i=0;i<name.size();i++){
+                        System.out.print(name.get(i)+"    ");
+                        System.out.print(cutoff.get(i)+"    ");
+                        System.out.println(id.get(i));
+
+                    }
+                    break;
+
+            }
+        }
+    }
+
+}
+
