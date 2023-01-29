@@ -1,0 +1,24 @@
+import java.util.*;
+import java.io.*;
+//                            <interface>
+//                            Autoclossable
+//                                  ^
+//                                  |
+//                            <interface>
+//                             Closeable
+//                          ^           ^
+//                         /             \
+//                   inputStream       outputstream
+//                   ^                            ^
+//                  / \                          /       \
+//   fileinputstream  filterinputstream fileoutputstream  filteroutputstream
+//                       ^                                 ^
+//                       |                                 |
+//                   BufferedInputstream              Bufferedoutputstream
+//Writer,reader--->used to read and write the data
+// where as stream-->is used to handle the binary data
+class Main{
+    public static void main(String[] args) throws IOException {
+
+    }
+}
