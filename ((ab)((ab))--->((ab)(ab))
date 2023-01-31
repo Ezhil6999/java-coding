@@ -96,3 +96,49 @@ public class Bank {
        }
    }
 }
+
+
+
+
+
+import java.util.*;
+class Main1{
+    // ((ab)((ab))--->((ab)(ab))
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s="((ab)((ab))";
+        char[]ch=s.toCharArray();
+        char[]arr=new char[ch.length];
+        int count1=0,count2=0;
+        for (int i=0;i<ch.length;i++){
+            if(ch[i]=='(')count1++;
+            if(ch[i]==')')count2++;
+            if(ch[i]>='a'&&ch[i]<='z'){
+                arr[i]=ch[i];
+            }
+        }
+        if(count1==count2){
+            System.out.println("\nThe paranthisis is balance======================");
+        } else if (count1>count2) {
+            int count=0;
+            for (int i=0;i<ch.length;i++){
+                if(ch[i]=='('){
+                    count++;
+                    if(count>count2){
+
+                    }else{
+                        arr[i]=ch[i];
+                    }
+                }
+                if(ch[i]==')'){
+                    arr[i]=ch[i];
+                }
+            }
+        }
+        for (int i=0;i<arr.length;i++){
+            if(arr[i]!=0)
+                System.out.print(arr[i]);
+        }
+
+        }
+}
