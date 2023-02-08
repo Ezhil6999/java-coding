@@ -1,0 +1,58 @@
+import java.util.Scanner;
+class Main{
+    public static void main(String[] args) {
+//        Input:
+//        9 2 4 1
+//        0 6 2 8
+//        0 0 7 5
+//        0 0 0 9
+//        Output:
+//        Upper triangular matrix is the result.
+//        Input:
+//        0 1
+//        1 1
+//        Output:
+//        Lower Triangular Matrix 4 is the result.
+
+        Scanner sc = new Scanner(System.in);
+        int row = sc.nextInt();
+        int column = sc.nextInt();
+        int arr[][] = new int[row][column];
+        int ar[]=new int[row];
+        int count=0;
+        for (int i = 0; i < row; i++) {
+            count=0;
+            for (int j = 0; j < column; j++) {
+                arr[i][j] = sc.nextInt();
+                if(arr[i][j]!=0){
+                    count++;
+                }
+            }
+            ar[i]=count;
+        }
+        for (int i = 0; i < row; i++) {
+            System.out.println(ar[i]);
+        }
+        int k=row;
+        count=0;
+        int count1=0;
+        int l=1;
+        for (int i = 0; i < row; i++) {
+            if(ar[i]==k){
+                k--;
+                count++;
+                System.out.println(count +"count   ");
+
+            }  if(ar[i]==l){
+                l++;
+                count1++;
+                System.out.println(count1 +"count   1");
+
+            }
+
+        }
+        if(count==row) System.out.println("upper");
+        if(count1==row) System.out.println("lower");
+
+    }
+}
