@@ -93,3 +93,45 @@ class Main{
         System.out.println(ss);
  }
 }
+
+import java.util.*;
+class Main{
+//    1 2 4 15 8
+//    max digit 2
+//    10 20 40 51 80
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int []arr=new int[5];int []ar=new int[5];
+        int len=0;
+        for(int i=0;i<arr.length;i++){
+            arr[i]= sc.nextInt();
+            if(arr[i]>len){
+                len=arr[i];
+            }
+        }
+        String m=""+len;
+        len=m.length();
+
+
+        for(int i=0;i<arr.length;i++){
+            String k=String.valueOf(arr[i]);
+            StringBuffer sb=new StringBuffer(k);
+            int le=sb.length();
+            sb.reverse();
+           while (le<len){
+               sb.append("0");
+               le=sb.length();
+           }
+           ar[i]=Integer.parseInt(String.valueOf(sb));
+
+
+        }
+        for(int i=0;i<ar.length;i++){
+            System.out.println(ar[i]);
+        }
+
+
+        }
+
+
+}
