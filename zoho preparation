@@ -135,3 +135,20 @@ class Main{
 
 
 }
+
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+class Main{
+//    aaa
+//    aa
+    public static void main(String[] args) {
+       Scanner sc=new Scanner(System.in);
+       String s1=sc.nextLine();
+       String s2=sc.nextLine();
+       boolean b=Pattern.matches(s2,s1);
+        System.out.println(b);
+    }
+
+
+}
