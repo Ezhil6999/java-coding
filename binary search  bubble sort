@@ -1,0 +1,39 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+class Main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int arr[]={10,23,32,11,21,40,30};
+        int k=0;
+       while (k<arr.length-1) {
+           for (int i = 0; i <= arr.length; i++) {
+               for (int j = i; j < arr.length; j++) {
+                   if (arr[i] > arr[j]) {
+                       int temp=arr[i];
+                       arr[i]=arr[j];
+                       arr[j]=temp;
+                   }
+               }
+           }k++;
+       }
+        System.out.println(Arrays.toString(arr));
+       binarysearch(arr);
+    }
+
+    private static void binarysearch(int[] arr) {
+        int val=40;
+        int min=0,max=arr.length-1;
+        while(min<=max){
+            int mid=(min+max)/2;
+            if(arr[mid]==val){
+                System.out.println("present"+mid);
+                break;
+            } else if (arr[mid]>val) {
+                max=mid-1;
+            }else {
+                min=mid+1;
+            }
+        }
+    }
+}
