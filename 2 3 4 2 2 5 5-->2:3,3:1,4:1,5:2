@@ -18,3 +18,31 @@ class Main{
             System.out.println(j +" : "+ne[j]);
         }
 }}
+
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class Main{
+    public static void main(String[] args) {
+      //7
+        // 2 3 4 2 2 5 5
+        Scanner sc=new Scanner(System.in);
+        int i=sc.nextInt();
+        int arr[]=new int[i];
+        Map<Integer,Integer> map=new HashMap<Integer,Integer>();
+
+        for(int j=0;j<arr.length;j++){
+            arr[j]=sc.nextInt();
+        }
+        for(int j=0;j<arr.length;j++){
+            if(map.containsKey(arr[j])){
+                int m=map.get(arr[j])+1;
+                map.replace(arr[j],m);
+            }else {
+                map.put(arr[j],1);
+            }
+        }
+        System.out.println(map);
+    }}
